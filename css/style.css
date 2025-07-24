@@ -1,0 +1,190 @@
+.chewy-regular {
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jua-regular {
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nanum-pen-script-regular {
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.alice-regular {
+  font-family: "Alice", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JSArirang-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSArirang-RegularA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.nanum-brush-script-regular {
+  font-family: "Nanum Brush Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gloria-hallelujah-regular {
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #fefefe;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #5a4a42;
+  margin: 0;
+  padding: 0;
+  cursor: url("../assets/cursors/pencil_cursor_32x32_cleaned.png") 10 10, auto;
+}
+
+h2 {
+  font-family: "Jua", sans-serif;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* 상단고정 메뉴바 스타일 */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(84, 138, 238, 0.6);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li a {
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 30px; /* 내부 여백으로 크기 조절 */
+  font-weight: bold;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 50px;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  text-align: center;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #ffd446;
+  background-color: #ffffff;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  transform: translate(-750px);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  flex-shrink: 0;
+}
+
+/* 헤더 기본 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 햄버거 버튼 */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* 메뉴 */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* 모바일용 스타일 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #333;
+    padding: 20px;
+    display: none;
+    border-radius: 10px;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+}

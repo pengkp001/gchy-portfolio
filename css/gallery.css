@@ -1,0 +1,43 @@
+.gallery {
+  margin: 80px auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 40px;
+  padding: 40px;
+  background-color: #f9f2e7; /* 따뜻한 크림/베이지톤 */
+}
+
+.gallery-item {
+  background-color: #fff8ef; /* 밝은 크림색 */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(90, 66, 32, 0.1); /* 부드러운 브라운 그림자 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(90, 66, 32, 0.2);
+}
+
+.gallery-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(118, 82, 20, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+.caption {
+  font-size: 12px;
+  color: #7d5f00; /* 따뜻한 갈색 */
+  letter-spacing: 1px;
+  font-family: "Gloria Hallelujah", cursive;
+}

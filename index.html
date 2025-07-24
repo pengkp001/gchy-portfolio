@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포트폴리오 사이트</title>
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/intro.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- 구글 폰트 (손글씨 느낌) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Chewy&family=Doto:wght@100..900&family=Fredoka:wght@300..700&family=Gloria+Hallelujah&family=Jua&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="JS/app.js" defer></script>
+    <script src="JS/intro.js" defer></script>
+  </head>
+  <body>
+    <!-- 상단 고정 메뉴바 -->
+    <header class="menu-bar">
+      <div class="logo">로고</div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Intro 섹션 -->
+      <section id="intro" class="page-section active intro-typing-section">
+        <div class="intro-section">
+          <!-- 🔊 사각사각 사운드 -->
+          <audio
+            id="scribbleSound"
+            src="assets/sounds/scribble.mp3"
+            preload="auto"
+          ></audio>
+
+          <!-- ✍️ 타이핑 텍스트 -->
+          <span id="typing"></span>
+
+          <!-- 📦 타이핑 주변 시각 요소 -->
+          <div class="typing-container">
+            <!-- ⭐️ 장식 이미지 (별) -->
+
+            <img
+              src="assets/images/solar_star-bold.png"
+              alt="star decoration"
+              class="star-img"
+            />
+            <img
+              src="assets/images/solar_star-bold.png"
+              alt="star decoration"
+              class="star-img2"
+            />
+            <img
+              src="assets/images/solar_star-bold.png"
+              alt="star decoration"
+              class="star-img3"
+            />
+
+            <img
+              src="assets/images/AdobeStock_500854144-2.png"
+              alt="임시"
+              class="intro-img"
+            />
+
+            <img
+              src="assets/images/AdobeStock_761543280-[Converted]-2.png"
+              alt=""
+            />
+
+            <!-- 💬 추가 문구 (필요 시 JS에서 출력) -->
+            <p id="typed-text"></p>
+
+            <!-- 📄 배경 이미지 (노트배경 등) -->
+            <img
+              src="assets/images/AdobeStock_248490236.jpeg"
+              alt="background image"
+              class="bg-img"
+            />
+
+            <!-- ✨ 오버레이 gif-->
+            <img
+              src="assets/images/star-2.gif"
+              alt="overlay animation"
+              class="overlay-gif"
+            />
+
+            <!-- 🔽 스크롤 유도 -->
+            <div class="scroll-indicator">↓ Scroll</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Me 섹션 -->
+      <section id="about" class="about-section">
+        <h2>About Me</h2>
+
+        <div class="about-image">
+          <img
+            src="assets/images/AdobeStock_495846730.jpeg"
+            alt="About 섹션 이미지"
+          />
+        </div>
+
+        <!-- 프로필 -->
+        <div class="profile">
+          <div class="profile-image-container">
+            <img src="assets/images/pgimg.png" alt="프로필 이미지" />
+            <div class="greeting-message">안녕하세요! 만나서 반가워요 :)</div>
+          </div>
+          <p>소개 문구가 여기에 들어갑니다.</p>
+        </div>
+
+        <!-- 학력 및 경력 -->
+        <div class="text-info2">
+          <h3>학력</h3>
+          <p>
+            <strong>계명문화대학교</strong> <br />디지털콘텐츠학부 애니메이션과
+            졸업
+          </p>
+
+          <h3>경력</h3>
+          <p>무경력</p>
+        </div>
+
+        <!-- 경험 -->
+        <div class="text-info2">
+          <h3>경험</h3>
+          <p>
+            <strong>2025.02.28 ~ 2025.08.13</strong><br />
+            그린컴퓨터아트학원<br />
+            디지털디자인 UX/UI 반응형디자인 & 웹 퍼블리셔 디자인&코딩
+          </p>
+          <p>
+            <strong>2018.09.27 ~ 2019.02.28</strong><br />
+            그린컴퓨터아트학원<br />
+            디지털퍼블리싱 편집 (실무자 양성훈련)
+          </p>
+        </div>
+
+        <!-- 연락처 -->
+        <div class="text-info-contact">
+          <h3>연락처</h3>
+          <div class="email-icons">
+            <a href="mailto:gusdud0325kp@gmail.com">
+              <img src="assets/images/ic_round-email.png" alt="이메일" />
+            </a>
+            <a href="mailto:gusdud0325@naver.com" target="_blank">
+              <img
+                src="assets/images/simple-icons_naver.png"
+                alt="네이버 메일"
+              />
+            </a>
+            <a href="https://github.com/yourid" target="_blank">
+              <img
+                src="assets/images/mdi_github.png"
+                alt="깃허브"
+                class="icon3"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skill 섹션 -->
+      <section id="skill">
+        <h2>Skill</h2>
+        <ul class="skills-list">
+          <li>
+            <figure data-skill="photoshop">
+              <img
+                src="assets/images/Variant3.png"
+                alt="Adobe Photoshop 아이콘"
+              />
+              <figcaption>포토샵</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure data-skill="illustrator">
+              <img
+                src="assets/images/Variant2.png"
+                alt="Adobe Illustrator 아이콘"
+              />
+              <figcaption>일러스트</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure data-skill="vscode">
+              <img src="assets/images/Variant-1.png" alt="VSCode 아이콘" />
+              <figcaption>VSCode</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure data-skill="figma">
+              <img src="assets/images/Variant4.png" alt="Figma 아이콘" />
+              <figcaption>피그마</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Portfolio 섹션 -->
+      <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img src="assets/images/pgimg.png" alt="웹디자인 작업물 이미지" />
+            </div>
+            <span class="portfolio-number">01</span>
+            <h3 class="portfolio-label">웹디자인</h3>
+            <span class="project-count">01</span>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img src="assets/images/pgimg.png" alt="앱디자인 작업물 이미지" />
+            </div>
+            <span class="portfolio-number">02</span>
+            <h3 class="portfolio-label">앱디자인</h3>
+            <span class="project-count">05</span>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img src="assets/images/pgimg.png" alt="클론코딩 작업물 이미지" />
+            </div>
+            <span class="portfolio-number">03</span>
+            <h3 class="portfolio-label">클론코딩</h3>
+            <span class="project-count">11</span>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img src="assets/images/pgimg.png" alt="카페24 작업물 이미지" />
+            </div>
+            <span class="portfolio-number">04</span>
+            <h3 class="portfolio-label">카페24</h3>
+            <span class="project-count">17</span>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img
+                src="assets/images/pgimg.png"
+                alt="그래픽디자인 작업물 이미지"
+              />
+            </div>
+            <span class="portfolio-number">05</span>
+            <h3 class="portfolio-label">그래픽디자인</h3>
+            <span class="project-count">21</span>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="image-box">
+              <img src="assets/images/pgimg.png" alt="기타 작업물 이미지" />
+            </div>
+            <span class="portfolio-number">06</span>
+            <h3 class="portfolio-label">기타</h3>
+            <span class="project-count">25</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h1>gallery</h1>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="assets/images/pgimg.png" alt="Logo 1" />
+            <div class="caption">Client Name</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pgimg.png" alt="Logo 2" />
+            <div class="caption">Client Name</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/pgimg.png" alt="Logo 3" />
+            <div class="caption">Client Name</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact 섹션 -->
+      <section id="contact">
+        <h2>Contact Me</h2>
+
+        <form action="#" method="post" class="contact-form">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your.email@example.com"
+            required
+          />
+
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+
+        <div class="contact-info">
+          <p>Email: your.email@example.com</p>
+          <p>Phone: +82 10-1234-5678</p>
+          <p>Address: Seoul, South Korea</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 BHY.</p>
+    </footer>
+
+    <!-- JS 연결 -->
+    <script src="JS/app.js" defer></script>
+    <script src="JS/intro.js" defer></script>
+  </body>
+</html>

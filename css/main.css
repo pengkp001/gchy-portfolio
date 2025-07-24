@@ -1,0 +1,429 @@
+/* 공통 섹션 스타일 */
+.about-section {
+  max-width: 100%;
+  width: 100%;
+  height: 100vh;
+  color: #1a1a1a;
+  mix-blend-mode: multiply;
+}
+
+/* 이미지와 인삿말을 포함하는 래퍼 */
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.greeting-message {
+  position: absolute;
+  bottom: 100%; /* 이미지 위에 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+/* 꼬리 추가 */
+.greeting-message::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* 말풍선 아래에 위치 */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+}
+
+/* 호버 시 나타남 */
+.profile-image-container:hover .greeting-message {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* About 섹션 전체 레이아웃 */
+#about {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* 배경 이미지 영역 */
+.about-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+/* 배경 이미지 자체 스타일 */
+.about-image img {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  opacity: 60%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* 제목, 설명 */
+#about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: "Alice", serif;
+  margin-top: 60px;
+}
+
+/* 프로필 */
+.profile {
+  margin: 2rem auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.profile p {
+  color: white;
+  font-family: "Alice", serif;
+}
+
+.profile img {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.profile img:hover {
+  transform: scale(1.05);
+}
+
+/* 텍스트 정보 (학력, 경력, 경험 등) */
+.text-info {
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.text-info2 h3 {
+  font-size: 35px;
+  font-family: "Jua", sans-serif;
+  color: skyblue;
+}
+
+.text-info2 p {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.text-info-contact h3 {
+  font-size: 35px;
+  font-family: "Jua", sans-serif;
+  color: skyblue;
+}
+
+/* 연락처 아이콘 */
+.email-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.email-icons img,
+.icon-box img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+
+.email-icons img:hover,
+.icon-box img:hover {
+  transform: scale(1.1);
+}
+
+/* 전체 박스 컨테이너 - 그리드 레이아웃 */
+.info-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* 텍스트 정보 */
+.text-info {
+  margin: 2rem auto;
+  max-width: 700px;
+  text-align: left;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.text-info h3 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  color: skyblue;
+}
+
+/* 연락처 아이콘 */
+.email-icons {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.email-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: skyblue;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(174, 74, 255, 0.4);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.email-icons a:hover {
+  background: #be5cff;
+  box-shadow: 0 12px 24px rgba(125, 95, 0, 0.7);
+  transform: scale(1.15);
+}
+
+.email-icons a img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(100%) invert(100%);
+  transition: filter 0.3s ease;
+}
+
+.email-icons a:hover img {
+  filter: brightness(90%) invert(90%);
+}
+
+/* 스킬 섹션 */
+#skill {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.skills-list li {
+  width: 100px;
+}
+
+.skills-list figure {
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-list img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px auto;
+  filter: sepia(0.4) saturate(1.2);
+}
+
+.skills-list figcaption {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a4220;
+  font-family: "Georgia", serif;
+}
+
+/* 호버 효과 */
+.skills-list figure:hover {
+  transform: scale(1.1);
+}
+
+/* 반응형 */
+@media (max-width: 700px) {
+  #self-intro {
+    padding: 40px 20px;
+  }
+
+  .profile h2 {
+    font-size: 2rem;
+  }
+
+  .info-boxes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-list {
+    gap: 20px;
+  }
+
+  .skills-list li {
+    width: 80px;
+  }
+
+  .skills-list img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .skills-list figcaption {
+    font-size: 12px;
+  }
+}
+
+/* 포트폴리오 그리드 */
+.portfolio-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.portfolio-item {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-box {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #d7c4a3;
+  box-shadow: 0 6px 12px rgba(118, 82, 20, 0.15);
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-box img:hover {
+  transform: scale(1.05);
+}
+
+/* 포트폴리오 번호와 라벨 */
+.portfolio-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #5a4220;
+  font-family: "Georgia", serif;
+}
+
+.portfolio-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  letter-spacing: 1px;
+  color: #7d5f00;
+  font-family: "Montserrat", sans-serif;
+}
+
+.project-count {
+  font-size: 10px;
+  margin-top: 10px;
+  color: #9c8a6b;
+  border-top: 1px solid #cbb994;
+  padding-top: 6px;
+  width: 100%;
+  text-align: center;
+}
+
+/* 컨택트 섹션 */
+#contact {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  color: #5a4220;
+  font-family: "Georgia", serif;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-form label {
+  font-weight: 600;
+  text-align: left;
+  color: #5a4220;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #cbb994;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: "Georgia", serif;
+  background-color: #fff8ef;
+  color: #5a4220;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #a67c00;
+  outline: none;
+}
+
+.contact-form button {
+  padding: 12px;
+  background-color: #a67c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Nanum Brush Script", cursive;
+}
+
+.contact-form button:hover {
+  background-color: #7d5f00;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #6f4e1e;
+  font-family: "Georgia", serif;
+}
