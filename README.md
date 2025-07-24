@@ -1,42 +1,25 @@
-배경 #FFF8E7 (크림) 따뜻하고 부드러운 종이 느낌
-카드 배경 #FFFFFF (화이트) 깔끔하고 콘텐츠 집중
-텍스트 #333333 (다크 그레이) 가독성 좋고 눈에 편안함
-강조색 #3AB795 (민트 그린) 신선하고 산뜻한 포인트 색상
-서브 강조색 #A67C52 (따뜻한 브라운) 앨범 느낌의 테이프, 클립 등 디테일용
-
-배경 & 전체 레이아웃
-크림색 배경 위에 흰색 카드가 떠 있는 느낌
-
-충분한 여백으로 카드 간격 확보
-
-페이지 전체에 은은한 종이 질감 텍스처(불투명도 낮게) 적용 가능
-
-카드 디자인
-카드 모서리는 둥글게 (8px~12px)
-
-카드 그림자: 부드러운 그림자(예: box-shadow: 0 4px 10px rgba(0,0,0,0.1))
-
-카드 위에 손글씨 느낌의 ‘테이프’ 또는 ‘클립’ 일러스트 디테일 추가
-
-마우스 오버 시 살짝 확대와 그림자 강화, 카드 위 텍스트 반투명 오버레이로 설명 노출
-
-타이포그래피
-타이틀: 손글씨 느낌 폰트 (예: ‘Pacifico’, ‘Dancing Script’) — 포인트 섹션 제목용
-
-본문 및 설명: 산세리프체 (예: ‘Noto Sans KR’, ‘Roboto’, ‘Inter’) — 깔끔하고 가독성 우수
-
-강조 텍스트나 버튼: 민트 그린 컬러 사용
-
-네비게이션 & 필터 탭
-상단 고정 네비게이션 바: 배경은 반투명 화이트(#FFFFFF, opacity 0.9)
-
-필터 탭 버튼: 민트 그린 배경, 둥근 모서리, 선택된 탭은 브라운 톤 배경으로 강조
-
-탭 간격은 충분히 띄워서 터치 편의성 높임
-
-인터랙션
-부드러운 페이드 인/아웃 효과
-
-페이지 넘김 시 슬라이드 애니메이션
-
-카드 클릭 시 모달 팝업 부드럽게 등장
+<div align= "center">
+    <img src="https://capsule-render.vercel.app/api?type=soft&color=0:a8abff,100:d6adff&height=120&text=포트폴리오&animation=fadeIn&fontColor=ffffff&fontSize=50" />
+    </div>
+    <div style="text-align: left;"> 
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 안녕하세요 ooo입니다. </h2>  
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> ooo의 포트폴리오 페이지입니다.</li>다양한 디자인 작업 및 UI/UX 작업물을 확인 하실 수 있습니다. </div> 
+    </div>
+    <div style="text-align: left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br> 
+    <div style="margin: ; text-align: left;" "text-align: left;"> <img src="https://img.shields.io/badge/Figma-F24E1E?style=plastic&logo=Figma&logoColor=white">
+          <img src="https://img.shields.io/badge/Github-181717?style=plastic&logo=Github&logoColor=white">
+          <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=plastic&logo=Javascript&logoColor=white">
+          <img src="https://img.shields.io/badge/Notion-000000?style=plastic&logo=Notion&logoColor=white">
+          <img src="https://img.shields.io/badge/HTML5-E34F26?style=plastic&logo=HTML5&logoColor=white">
+          <br/><img src="https://img.shields.io/badge/Git-F05032?style=plastic&logo=Git&logoColor=white">
+          </div>
+    </div>
+    <div style="text-align: left;">
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🧑‍💻 Contact me </h2> <br> 
+    <div style="text-align: left;"> <a href=mailto:gusdud0325kp@gmail.com> <img src="https://img.shields.io/badge/Gmail-EA4335?style=plastic&logo=Gmail&logoColor=white&link=mailto:gusdud0325kp@gmail.com"> </a>
+         <a href=구글메일> <img src="https://img.shields.io/badge/Notion-000000?style=plastic&logo=Notion&logoColor=white&link=구글메일"> </a>
+         <a href=gusdud0325@naver.com> <img src="https://img.shields.io/badge/Naver-03C75A?style=plastic&logo=Naver&logoColor=white&link=gusdud0325@naver.com"> </a>
+          </div>  <br> 
+    <div style="text-align: left;">  </div> 
+    </div>
