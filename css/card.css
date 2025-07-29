@@ -1,0 +1,263 @@
+#portfolio {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px; /* 상단 공간 확보 */
+  padding-bottom: 50px;
+  background: linear-gradient(rgba(255, 255, 255, 0.6));
+}
+
+/* 포트폴리오 메인 제목 */
+#portfolio > h2 {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #ffffff;
+  margin: 0; /* 기본 마진 제거 */
+  padding: 10px 0;
+  text-shadow: 0 0 8px #3de8dbaa, 0 0 20px #3de8db88;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+#portfolio h2 {
+  margin-top: 80px;
+}
+
+.portfolio-items {
+  margin-top: 50px;
+  margin-left: 30%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.card:hover img {
+  filter: brightness(0.4);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+}
+
+.overlay h3 {
+  font-size: 30px;
+}
+
+.portfolio-category h3 {
+  transform: translate(10%, 190%);
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #eee;
+}
+
+.portfolio-items img {
+  background-color: rgb(255, 254, 253);
+}
+
+/* 기본 카드 레이아웃 */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  width: 400px;
+  height: 350px;
+  background: lightgray;
+  position: relative;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 모달 기본 스타일 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+#modal-images img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* 배경색 */
+  justify-content: center;
+  align-items: center;
+}
+
+#modal .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 제목 */
+#modal-title {
+  font-family: "Nanum Brush Script", cursive;
+  text-shadow: 0 0 0px #5ef7ea;
+  color: #3a8edc;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* 메인 이미지 */
+.modal-main-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* 설명 */
+.modal-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 썸네일 갤러리 */
+.modal-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.modal-gallery img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.modal-gallery img:hover {
+  border-color: #3a8edc;
+}
+
+/* 링크 버튼 */
+.modal-link-btn {
+  background-color: #3a8edc;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-link-btn:hover {
+  background-color: #7f76ff;
+}

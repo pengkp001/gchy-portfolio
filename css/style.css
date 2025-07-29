@@ -1,3 +1,16 @@
+:root {
+  --primary-light: #3de8db;
+  --primary-dark: #29c1b7;
+  --background-gradient-start: #1a3a6d;
+  --background-gradient-end: #0d1e3c;
+  --subcard-bg: rgba(10, 50, 90, 0.6);
+  --subcard-bg-hover: rgba(10, 80, 150, 0.8);
+  --text-light: #cce6ff;
+  --text-dark: #121212;
+  --hover-bg: rgba(61, 232, 219, 0.85);
+  --hover-bg-sub: rgba(61, 232, 219, 0.9);
+}
+
 .chewy-regular {
   font-family: "Chewy", system-ui;
   font-weight: 400;
@@ -50,7 +63,8 @@
 
 html,
 body {
-  background-color: #fefefe;
+  width: 100%;
+  background-color: #ffffff;
   color: #333;
   line-height: 1.6;
   scroll-behavior: smooth;
@@ -60,11 +74,36 @@ body {
   color: #5a4a42;
   margin: 0;
   padding: 0;
-  cursor: url("../assets/cursors/pencil_cursor_32x32_cleaned.png") 10 10, auto;
+  cursor: url("../assets/cursors/star-cursor.png") 16 16, auto;
 }
 
 h2 {
   font-family: "Jua", sans-serif;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #ffffff;
+  text-shadow: 0 0 10px #5ef7ea, 0 0 25px #3de8db, 0 0 40px #32cfc8,
+    0 0 60px #3df0df;
+  margin-bottom: 30px;
+  letter-spacing: 0.15em;
+  padding: 50px 50px;
+}
+
+h3 {
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 50px;
+}
+
+p {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 50px;
+}
+
+li {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 20px;
 }
 
 @keyframes twinkle {
@@ -76,115 +115,67 @@ h2 {
   }
 }
 
-/* 상단고정 메뉴바 스타일 */
-header {
+/* 고정 메뉴바 */
+.menu-bar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
-  background-color: rgba(84, 138, 238, 0.6);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li a {
-  color: #1a1a1a;
-  text-decoration: none;
-  display: inline-block;
-  padding: 10px 30px; /* 내부 여백으로 크기 조절 */
-  font-weight: bold;
-  font-family: "Nanum Brush Script", cursive;
-  font-size: 50px;
-  transition: all 0.3s ease;
-  border-radius: 30px;
-  text-align: center;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #ffd446;
-  background-color: #ffffff;
-}
-
-.logo {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  transform: translate(-750px);
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: #1a1a1a;
-  flex-shrink: 0;
-}
-
-/* 헤더 기본 */
-header {
+  padding: 16px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background: #222;
-  color: white;
-  position: relative;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* 햄버거 버튼 */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: white;
+  backdrop-filter: blur(10px); /* 유리같은 효과 */
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1000;
   transition: all 0.3s ease;
 }
 
-/* 메뉴 */
-.nav-menu {
+/* 로고 */
+.menu-bar .logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 메뉴 항목 */
+.nav-menu ul {
   display: flex;
-  gap: 20px;
+  gap: 24px;
+  list-style: none;
 }
 
-.nav-menu a {
-  color: white;
+.nav-menu ul li a {
   text-decoration: none;
-  font-weight: 500;
+  color: #444;
+  font-size: 50px;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
-/* 모바일용 스타일 */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
+.nav-menu ul li a::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #555;
+  border-radius: 50%;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.3s ease;
+}
 
-  .nav-menu {
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: #333;
-    padding: 20px;
-    display: none;
-    border-radius: 10px;
-  }
+.nav-menu ul li a:hover {
+  color: #000;
+}
 
-  .nav-menu.show {
-    display: flex;
-  }
+.nav-menu ul li a:hover::after {
+  transform: translateX(-50%) scale(1);
+}
+
+/* 스크롤 시 바 스타일 변화용 클래스 */
+.menu-bar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }

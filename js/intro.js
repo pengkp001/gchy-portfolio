@@ -1,95 +1,60 @@
-// const text = "Hello,\nwelcome to my portfolio!";
-// const target = document.getElementById("typing");
-// const audio = document.getElementById("scribbleSound");
-// let index = 0;
+const whale = document.querySelector(".whale-image");
 
-// function typeEffect() {
-//   if (index < text.length) {
-//     const char = text.charAt(index);
+window.addEventListener("mousemove", (e) => {
+  const rect = whale.getBoundingClientRect();
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
 
-//     // 줄바꿈 처리
-//     if (char === "\n") {
-//       target.innerHTML += "<br>";
-//     } else {
-//       target.innerHTML += char;
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
 
-//       // 효과음 재생
-//       audio.currentTime = 0; // 매번 처음부터 재생
-//       audio.play();
-//     }
+  const distance = Math.sqrt((mouseX - centerX) ** 2 + (mouseY - centerY) ** 2);
 
-//     index++;
-//     setTimeout(typeEffect, 100); // 타이핑 속도
-//   }
-// }
+  const hoverRadius = 120; // 원하는 거리만큼 조절 (단위: px)
 
-// typeEffect();
-
-const typedTextElement = document.getElementById("typed-text");
-// \n → <br>로 변환
-const textToType = "Hello,\nwelcome to \nmy portfolio!".replace(/\n/g, "<br>");
-let charIndex = 0;
-const typingSpeed = 100;
-
-function typeText() {
-  if (charIndex < textToType.length) {
-    if (textToType[charIndex] === "<") {
-      let tag = "";
-      while (charIndex < textToType.length && textToType[charIndex] !== ">") {
-        tag += textToType[charIndex];
-        charIndex++;
-      }
-      if (charIndex < textToType.length) {
-        tag += ">";
-        charIndex++;
-      }
-      typedTextElement.insertAdjacentHTML("beforeend", tag);
-    } else {
-      typedTextElement.insertAdjacentHTML("beforeend", textToType[charIndex]);
-      charIndex++;
-    }
-    setTimeout(typeText, typingSpeed);
+  if (distance < hoverRadius) {
+    whale.classList.add("hover-effect");
+  } else {
+    whale.classList.remove("hover-effect");
   }
-}
-
-typeText();
-
-// 별빛 랜덤 생성
-const starsContainer = document.getElementById("stars");
-const starCount = 80;
-
-for (let i = 0; i < starCount; i++) {
-  const star = document.createElement("div");
-  star.classList.add("star");
-  const size = Math.random() * 2 + 1;
-  star.style.width = size + "px";
-  star.style.height = size + "px";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.left = Math.random() * 100 + "%";
-  star.style.animationDuration = Math.random() * 3 + 2 + "s";
-  starsContainer.appendChild(star);
-}
-
-document.querySelector("#intro").scrollIntoView({
-  behavior: "smooth",
 });
 
-window.addEventListener("scroll", () => {
-  const sections = document.querySelectorAll("section[id]");
-  const scrollY = window.pageYOffset;
-
-  sections.forEach((section) => {
-    const sectionHeight = section.offsetHeight;
-    const sectionTop = section.offsetTop - 50;
-    const sectionId = section.getAttribute("id");
-    const navLink = document.querySelector(
-      `.nav-inner a[href="#${sectionId}"]`
-    );
-
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      navLink.classList.add("active");
-    } else {
-      navLink.classList.remove("active");
+whaleImage.addEventListener("click", () => {
+  if (whaleImage.classList.contains("hovered")) {
+    squeakSound.currentTime = 0;
+    const playPromise = squeakSound.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log("Audio play error:", error);
+      });
     }
+
+    whaleImage.style.transition = "transform 0.2s ease";
+    whaleImage.style.transform = "scale(1.1)";
+
+    setTimeout(() => {
+      whaleImage.style.transform = "";
+    }, 200);
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const whale = document.querySelector(".whale-image");
+  const overlay = document.querySelector(".color-overlay");
+  const sound = document.getElementById("squeak-sound");
+
+  whale.addEventListener("click", () => {
+    // 소리 재생
+    sound.currentTime = 0;
+    sound.play();
+
+    // 애니메이션 효과 추가
+    whale.classList.add("clicked");
+    overlay.classList.add("active");
+
+    // 1초 후 애니메이션 클래스 제거
+    setTimeout(() => {
+      whale.classList.remove("clicked");
+      overlay.classList.remove("active");
+    }, 1000);
   });
 });

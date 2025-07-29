@@ -1,272 +1,201 @@
-#intro {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #fef1ef, #b5e2fa);
-}
-
 .intro-section {
+  position: relative;
   width: 100%;
   height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.page-section {
-  width: 100%;
-  height: 100vh;
+.intro-content {
   position: relative;
-  overflow: hidden;
+  z-index: 10;
 }
 
-.typing-container .highlight {
+/* ✨ 반짝이는 별 GIF 배경 */
+.stars-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(1.2);
-  z-index: -1;
-  opacity: 0.8;
-}
-
-.typing-container p,
-#typed-text {
-  color: white;
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: 100px;
-  margin-bottom: 1rem;
-  white-space: nowrap;
-  animation: blink 0.7s step-end infinite;
-  z-index: 20;
-}
-
-.intro-img {
-  position: absolute;
-  transform: translate(85%, 10%);
-  width: 40%;
-  z-index: 50;
-  animation: floatReverse3 3s ease-in-out infinite;
-}
-
-@keyframes floatReverse3 {
-  0% {
-    transform: translate(85%, 10%) translateY(0);
-  }
-  50% {
-    transform: translate(85%, 10%) translateY(10px);
-  }
-  100% {
-    transform: translate(85%, 10%) translateY(0);
-  }
-}
-
-.star-img {
-  position: absolute;
-  transform: translate(-260%, 135%);
-  z-index: 50;
-  animation: float 3s ease-in-out infinite;
-  mix-blend-mode: hard-light;
-}
-
-@keyframes floatReverse {
-  0% {
-    transform: translate(260%, -135%) translateY(0);
-  }
-  50% {
-    transform: translate(260%, -135%) translateY(10px);
-  }
-  100% {
-    transform: translate(260%, -135%) translateY(0);
-  }
-}
-
-.star-img2 {
-  position: absolute;
-  transform: translate(180%, -135%);
-  z-index: 50;
-  animation: floatReverse2 3s ease-in-out infinite;
-  mix-blend-mode: hard-light;
-  opacity: 80%;
-}
-
-@keyframes floatReverse2 {
-  0% {
-    transform: translate(180%, -135%) translateY(0);
-  }
-  50% {
-    transform: translate(180%, -135%) translateY(10px);
-  }
-  100% {
-    transform: translate(180%, -135%) translateY(0);
-  }
-}
-
-.star-img3 {
-  position: absolute;
-  transform: translate(-160%, -100%);
-  width: 8%;
-  z-index: 50;
-  animation: floatReverse4 3s ease-in-out infinite;
-  mix-blend-mode: hard-light;
-}
-
-@keyframes floatReverse4 {
-  0% {
-    transform: translate(-160%, -100%) translateY(0);
-  }
-  50% {
-    transform: translate(-160%, -100%) translateY(10px);
-  }
-  100% {
-    transform: translate(-160%, -100%) translateY(0);
-  }
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-.bg-img {
-  position: absolute;
-  width: 100%;
+  width: 200%;
   height: 100vh;
-  top: 0;
-  left: -525px;
-  width: 150%;
-  /* object-fit: cover; */
-  z-index: -10;
-}
-
-.overlay-gif {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -5;
-  opacity: 0.6;
+  pointer-events: none;
+  z-index: 2; /* 물결 영상 위 */
+  background: linear-gradient(hsl(189, 64%, 74%), #5630ff);
   mix-blend-mode: overlay;
-  pointer-events: none;
-  filter: contrast(120%) brightness(1.2);
 }
 
-.highlight::after {
-  content: "";
+.stars-overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%; /* 화면보다 살짝 크게 */
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.5; /* 투명도 조절 가능 */
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 🌊 물결 영상 배경 */
+.wave-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+.wave-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  backdrop-filter: blur(10px) brightness(1.1);
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  z-index: 1;
-  pointer-events: none;
+  opacity: 0.3;
+  z-index: 0;
+  mix-blend-mode: multiply;
 }
 
-.typing-container {
-  position: relative;
+.bubble-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  z-index: 10;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 0;
 }
 
-/* 커서 애니메이션 */
-@keyframes blink {
-  0%,
-  100% {
-    border-color: transparent;
+/* 메인 콘텐츠 */
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.intro-content h1 {
+  position: absolute;
+  width: 100%;
+  margin-top: 50px;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 5rem; /* 원하는 크기로 조절 */
+  color: white;
+  line-height: 0.3; /* 글자 높이 여유 주기 */
+  overflow: visible; /* 글자 잘림 방지 */
+}
+
+.intro-title {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+}
+
+/* 고래 이미지 */
+.whale-image {
+  width: 500px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+  will-change: transform, filter;
+}
+
+.whale-image:hover {
+  animation: floatAround 3s ease-in-out infinite;
+  filter: brightness(1.2) saturate(1.3) hue-rotate(10deg);
+}
+
+/* 떠다니는 애니메이션 keyframes */
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, -3px);
   }
   50% {
-    border-color: white;
+    transform: translate(-4px, 4px);
+  }
+  75% {
+    transform: translate(3px, 2px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
 
-.typing-container {
-  height: 100%;
-}
-
-/* 타이핑 텍스트 컨테이너 */
-.typing-container {
+.whale-wrapper {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* 세로 중앙 */
-  align-items: center; /* 가로 중앙 */
-  text-align: center;
-  z-index: 10;
+  display: inline-block;
+  cursor: pointer;
 }
 
-#typed-text {
-  text-shadow: 0 0 10px #a4f9ff, 0 0 20px #4a99ff, 0 0 30px #9c32ff;
-}
-
-.menu-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color: rgba(61, 194, 255, 0.5);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.typing-animation {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  min-height: 40px;
-}
-
-#typing {
+.color-overlay {
   position: absolute;
-  z-index: 100;
-  color: #333333;
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 100px;
-  font-weight: bold;
+  inset: 0;
+  background: rgba(70, 130, 180, 0.4); /* 파란색 반투명 오버레이 */
+  mix-blend-mode: screen;
   opacity: 0;
-  filter: blur(5px);
-  animation: fadeInText 0.5s ease-out forwards;
-  text-align: center;
-  letter-spacing: -2px;
-  line-height: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* 클릭, 호버 막기 */
 }
 
-@keyframes fadeInText {
-  to {
-    opacity: 1;
-    filter: blur(0);
+.whale-wrapper:hover .color-overlay {
+  opacity: 1;
+  animation: floatAround 3s ease-in-out infinite;
+}
+
+/* 고래 클릭 효과 */
+.whale-image.clicked {
+  animation: dreamyPulse 0.8s ease forwards;
+  filter: brightness(1.3) saturate(1.4) hue-rotate(20deg);
+}
+
+/* 컬러 오버레이 활성화 */
+.color-overlay.active {
+  opacity: 1;
+  animation: dreamyPulseOverlay 1s ease forwards;
+}
+
+/* 부드러운 빛 퍼짐 */
+@keyframes dreamyPulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(1.1) saturate(1.2) hue-rotate(10deg);
+  }
+  50% {
+    transform: scale(1.08);
+    filter: brightness(1.4) saturate(1.4) hue-rotate(20deg);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1.2) saturate(1.3) hue-rotate(10deg);
   }
 }
 
-.imgpei {
-  position: absolute;
-  z-index: 40;
-  width: 100%;
-  opacity: 70%;
-  mix-blend-mode: multiply;
+/* 오버레이도 부드럽게 번지는 효과 */
+@keyframes dreamyPulseOverlay {
+  0% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
 }
 
 .scroll-indicator {
@@ -298,5 +227,33 @@
   }
   100% {
     transform: translate(-260%, 135%) translateY(0);
+  }
+}
+
+.intro-img5 {
+  position: absolute;
+}
+
+.typing-effect {
+  overflow: hidden; /* 넘치는 글자 숨김 */
+  /* border-right: 2px solid #5ef7ea; */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  animation: typing 2s steps(10) forwards, blink 0.7s step-end infinite;
+}
+
+/* 타이핑 애니메이션 */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 10ch;
+  } /* 글자 수에 맞게 조절 (PORTFOLIO → 10자) */
+}
+
+/* 커서 깜빡임 */
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }

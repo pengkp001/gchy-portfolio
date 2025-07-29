@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="css/intro.css" />
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/cursor.css" />
+    <link rel="stylesheet" href="css/card.css" />
 
-    <!-- 구글 폰트 (손글씨 느낌) -->
+    <!-- 구글 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,164 +21,223 @@
       rel="stylesheet"
     />
 
+    <script src="js/cursor.js" defer></script>
     <script src="JS/app.js" defer></script>
     <script src="JS/intro.js" defer></script>
+    <script src="JS/gallery.js" defer></script>
   </head>
+
   <body>
-    <!-- 상단 고정 메뉴바 -->
+    <canvas
+      id="sparkle"
+      style="position: fixed; top: 0; left: 0; pointer-events: none"
+    ></canvas>
+
     <header class="menu-bar">
-      <div class="logo">로고</div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav class="nav-menu" id="nav-menu">
+      <div class="logo">BHY</div>
+      <nav class="nav-menu">
         <ul>
           <li><a href="#intro">Intro</a></li>
-          <li><a href="#about">About Me</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#skill">Skill</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#portfolio">Wolk</a></li>
+          <li><a href="#wolk-gallery">gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <!-- Intro 섹션 -->
-      <section id="intro" class="page-section active intro-typing-section">
-        <div class="intro-section">
-          <!-- 🔊 사각사각 사운드 -->
+      <section
+        id="intro"
+        class="intro-section space-whale"
+        style="position: relative"
+      >
+        <!-- 동영상 소스는 mp4, webm 두 가지로 넣어 브라우저 호환성 확보 -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          class="bubble-video"
+        >
+          <source
+            src="assets/videos/AdobeStock_732285963.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="assets/videos/AdobeStock_732285963.webm"
+            type="video/webm"
+          />
+        </video>
+
+        <!-- 의미 있는 alt 텍스트 추가 -->
+        <img
+          src="assets/images/AdobeStock_248490236.jpeg"
+          class="wave-bg"
+          alt="파도 배경 이미지"
+        />
+
+        <div class="stars-overlay">
+          <img src="assets/images/star-2.gif" alt="반짝이는 별 애니메이션" />
+        </div>
+
+        <!-- color-overlay가 wave-bg 및 비디오 위에 위치하도록 z-index 조절 필요 -->
+        <div class="color-overlay"></div>
+
+        <div class="intro-content" style="position: relative; z-index: 10">
+          <h1>PORTFOLIO</h1>
+
+          <img
+            src="assets/images/kgr-3.png"
+            alt="고래 이미지를 누르면 소리가 납니다"
+            class="whale-image"
+            style="cursor: pointer"
+            onclick="document.getElementById('squeak-sound').play()"
+          />
+
+          <!-- 예시로 버튼 추가 -->
           <audio
-            id="scribbleSound"
-            src="assets/sounds/scribble.mp3"
+            id="squeak-sound"
+            src="assets/sounds/squeak.mp3"
             preload="auto"
           ></audio>
+        </div>
 
-          <!-- ✍️ 타이핑 텍스트 -->
-          <span id="typing"></span>
-
-          <!-- 📦 타이핑 주변 시각 요소 -->
-          <div class="typing-container">
-            <!-- ⭐️ 장식 이미지 (별) -->
-
-            <img
-              src="assets/images/solar_star-bold.png"
-              alt="star decoration"
-              class="star-img"
-            />
-            <img
-              src="assets/images/solar_star-bold.png"
-              alt="star decoration"
-              class="star-img2"
-            />
-            <img
-              src="assets/images/solar_star-bold.png"
-              alt="star decoration"
-              class="star-img3"
-            />
-
-            <img
-              src="assets/images/AdobeStock_500854144-2.png"
-              alt="임시"
-              class="intro-img"
-            />
-
-            <img
-              src="assets/images/AdobeStock_761543280-[Converted]-2.png"
-              alt=""
-            />
-
-            <!-- 💬 추가 문구 (필요 시 JS에서 출력) -->
-            <p id="typed-text"></p>
-
-            <!-- 📄 배경 이미지 (노트배경 등) -->
-            <img
-              src="assets/images/AdobeStock_248490236.jpeg"
-              alt="background image"
-              class="bg-img"
-            />
-
-            <!-- ✨ 오버레이 gif-->
-            <img
-              src="assets/images/star-2.gif"
-              alt="overlay animation"
-              class="overlay-gif"
-            />
-
-            <!-- 🔽 스크롤 유도 -->
-            <div class="scroll-indicator">↓ Scroll</div>
-          </div>
+        <div class="scroll-indicator" aria-label="스크롤을 내려주세요">
+          ↓ Scroll
         </div>
       </section>
+    </main>
 
-      <!-- About Me 섹션 -->
-      <section id="about" class="about-section">
-        <h2>About Me</h2>
+    <!-- About Me 섹션 -->
+    <main>
+      <section>
+        <div id="about" class="about-right fade-in-up">
+          <h2 class="neon-title">About Me</h2>
 
-        <div class="about-image">
-          <img
-            src="assets/images/AdobeStock_495846730.jpeg"
-            alt="About 섹션 이미지"
-          />
-        </div>
+          <div class="about-content">
+            <!-- 프로필 카드 -->
+            <div class="profile-container">
+              <div
+                class="profile-card"
+                onclick="this.classList.toggle('flipped')"
+              >
+                <!-- 앞면 -->
+                <div class="card-face front">
+                  <img
+                    class="profile-img"
+                    src="assets/images/pgimg.png"
+                    alt="앞면"
+                  />
+                  <div class="tooltip">
+                    안녕하세요!<br />제 포트폴리오에 오신 것을 환영해요!
+                  </div>
+                </div>
 
-        <!-- 프로필 -->
-        <div class="profile">
-          <div class="profile-image-container">
-            <img src="assets/images/pgimg.png" alt="프로필 이미지" />
-            <div class="greeting-message">안녕하세요! 만나서 반가워요 :)</div>
+                <!-- 뒷면 -->
+                <div class="card-face back">
+                  <img
+                    class="profile-img"
+                    src="assets/images/me.jpg"
+                    alt="뒷면"
+                  />
+                  <div class="tooltip">
+                    하루하루 배워가며<br />디자이너로 자라나는 중입니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 기본 정보 + 아이콘 -->
+            <div class="about-side">
+              <div class="basic-info-box">
+                <h3>기본 정보</h3>
+                <ul>
+                  <li><strong>이름 :</strong> 백현영</li>
+                  <li><strong>생년월일 :</strong> 1997.03.25</li>
+                  <li><strong>전화번호 :</strong> 010-7675-64088</li>
+                  <li><strong>이메일 :</strong> gusdud0325kp@gmail.com</li>
+                </ul>
+              </div>
+
+              <div class="email-box">
+                <div class="email-icons">
+                  <a href="mailto:gusdud0325kp@gmail.com">
+                    <img src="assets/images/6244438.png" alt="이메일" />
+                  </a>
+                  <a
+                    href="https://github.com/pengkp001/gchy-portfolio"
+                    target="_blank"
+                  >
+                    <img src="assets/images/github.png" alt="GitHub" />
+                  </a>
+                  <a
+                    href="https://www.notion.so/23e3669bb292807bb9e6ed4fca297644"
+                    target="_blank"
+                  >
+                    <img src="assets/images/Notion-logo.svg.png" alt="Notion" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <p>소개 문구가 여기에 들어갑니다.</p>
-        </div>
 
-        <!-- 학력 및 경력 -->
-        <div class="text-info2">
-          <h3>학력</h3>
-          <p>
-            <strong>계명문화대학교</strong> <br />디지털콘텐츠학부 애니메이션과
-            졸업
+          <!-- 소개 문구 -->
+          <p class="about-description">
+            상상 속에서 우주를 건너듯,<br />
+            사용자 경험을 탐험하는 디자이너입니다.<br />
+            디자인과 코드, 그 경계에서 이야기를 만들어보는것을 추구합니다.
           </p>
 
-          <h3>경력</h3>
-          <p>무경력</p>
-        </div>
+          <!-- 배경 영상 -->
+          <video
+            class="profile-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            src="assets/videos/AdobeStock_732285963.mov"
+          ></video>
 
-        <!-- 경험 -->
-        <div class="text-info2">
-          <h3>경험</h3>
-          <p>
-            <strong>2025.02.28 ~ 2025.08.13</strong><br />
-            그린컴퓨터아트학원<br />
-            디지털디자인 UX/UI 반응형디자인 & 웹 퍼블리셔 디자인&코딩
-          </p>
-          <p>
-            <strong>2018.09.27 ~ 2019.02.28</strong><br />
-            그린컴퓨터아트학원<br />
-            디지털퍼블리싱 편집 (실무자 양성훈련)
-          </p>
-        </div>
+          <!-- 상세 정보 -->
+          <div class="about-details">
+            <h3>Educational</h3>
+            <ul>
+              <li>
+                <strong>계명문화대학교</strong> 디지털콘텐츠학부 애니메이션과
+                졸업
+              </li>
+            </ul>
 
-        <!-- 연락처 -->
-        <div class="text-info-contact">
-          <h3>연락처</h3>
-          <div class="email-icons">
-            <a href="mailto:gusdud0325kp@gmail.com">
-              <img src="assets/images/ic_round-email.png" alt="이메일" />
-            </a>
-            <a href="mailto:gusdud0325@naver.com" target="_blank">
-              <img
-                src="assets/images/simple-icons_naver.png"
-                alt="네이버 메일"
-              />
-            </a>
-            <a href="https://github.com/yourid" target="_blank">
-              <img
-                src="assets/images/mdi_github.png"
-                alt="깃허브"
-                class="icon3"
-              />
-            </a>
+            <h3>personal history</h3>
+            <ul>
+              <li>무 경력</li>
+            </ul>
+
+            <h3>Like</h3>
+            <ul>
+              <li>독서</li>
+              <li>요리</li>
+              <li>음악감상</li>
+              <li>일러스트와 드로잉</li>
+            </ul>
+
+            <h3>experience</h3>
+            <ul>
+              <li>
+                <strong>2025.02.28 ~ 2025.08.13</strong><br />
+                그린컴퓨터아트학원<br />
+                디지털디자인 UX/UI 반응형디자인 웹 퍼블리셔 디자인 코딩 (실무자
+                양성훈련)
+              </li>
+              <li>
+                <strong>2018.09.27 ~ 2019.02.28</strong><br />
+                그린컴퓨터아트학원<br />
+                디지털퍼블리싱 편집 (실무자 양성훈련)
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -186,33 +247,57 @@
         <h2>Skill</h2>
         <ul class="skills-list">
           <li>
-            <figure data-skill="photoshop">
+            <figure data-skill="photoshop" tabindex="0" aria-expanded="false">
               <img
                 src="assets/images/Variant3.png"
                 alt="Adobe Photoshop 아이콘"
               />
               <figcaption>포토샵</figcaption>
+              <div class="skill-detail">
+                <img
+                  src="assets/images/ptskill.png"
+                  alt="Photoshop 상세 이미지"
+                />
+              </div>
             </figure>
           </li>
           <li>
-            <figure data-skill="illustrator">
+            <figure data-skill="illustrator" tabindex="0" aria-expanded="false">
               <img
                 src="assets/images/Variant2.png"
                 alt="Adobe Illustrator 아이콘"
               />
               <figcaption>일러스트</figcaption>
+              <div class="skill-detail">
+                <img
+                  src="assets/images/istskill.png"
+                  alt="Illustrator 상세 이미지"
+                />
+              </div>
             </figure>
           </li>
           <li>
-            <figure data-skill="vscode">
+            <figure data-skill="vscode" tabindex="0" aria-expanded="false">
               <img src="assets/images/Variant-1.png" alt="VSCode 아이콘" />
               <figcaption>VSCode</figcaption>
+              <div class="skill-detail">
+                <img
+                  src="assets/images/vscodeskill.png"
+                  alt="VSCode 상세 이미지"
+                />
+              </div>
             </figure>
           </li>
           <li>
-            <figure data-skill="figma">
+            <figure data-skill="figma" tabindex="0" aria-expanded="false">
               <img src="assets/images/Variant4.png" alt="Figma 아이콘" />
               <figcaption>피그마</figcaption>
+              <div class="skill-detail">
+                <img
+                  src="assets/images/figamskill.png"
+                  alt="Figma 상세 이미지"
+                />
+              </div>
             </figure>
           </li>
         </ul>
@@ -220,134 +305,559 @@
 
       <!-- Portfolio 섹션 -->
       <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-grid">
-          <article class="portfolio-item">
-            <div class="image-box">
-              <img src="assets/images/pgimg.png" alt="웹디자인 작업물 이미지" />
-            </div>
-            <span class="portfolio-number">01</span>
-            <h3 class="portfolio-label">웹디자인</h3>
-            <span class="project-count">01</span>
-          </article>
+        <h2>Wolk</h2>
 
-          <article class="portfolio-item">
-            <div class="image-box">
-              <img src="assets/images/pgimg.png" alt="앱디자인 작업물 이미지" />
-            </div>
-            <span class="portfolio-number">02</span>
-            <h3 class="portfolio-label">앱디자인</h3>
-            <span class="project-count">05</span>
-          </article>
+        <!-- 웹디자인 -->
+        <div class="portfolio-category">
+          <h3>웹디자인</h3>
+          <div class="portfolio-items">
+            <!-- 개인 작업 -->
+            <article
+              class="card"
+              data-title="개인 프로젝트"
+              data-description="빙그레 리디자인"
+              data-imgs="assets/wolk/b-site.png, assets/wolk/b-mg.png, assets/wolk/b-wf.png"
+              data-img-descs="첫 번째 이미지 설명입니다., 두 번째 이미지 설명입니다., 세 번째 이미지 설명입니다."
+              data-link="https://www.figma.com/proto/wCujp9dGio3nCwuCpgiH9v/Untitled?node-id=110-221&t=lYuKrg0Kf4EU1xT5-0&scaling=min-zoom&content-scaling=fixed&page-id=11%3A126&starting-point-node-id=110%3A167"
+            >
+              <img src="assets/wolk/b.jpg" alt="빙그레 리디자인 작업 썸네일" />
+              <div class="overlay">
+                <h4>개인 작업</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
 
-          <article class="portfolio-item">
-            <div class="image-box">
-              <img src="assets/images/pgimg.png" alt="클론코딩 작업물 이미지" />
-            </div>
-            <span class="portfolio-number">03</span>
-            <h3 class="portfolio-label">클론코딩</h3>
-            <span class="project-count">11</span>
-          </article>
-
-          <article class="portfolio-item">
-            <div class="image-box">
-              <img src="assets/images/pgimg.png" alt="카페24 작업물 이미지" />
-            </div>
-            <span class="portfolio-number">04</span>
-            <h3 class="portfolio-label">카페24</h3>
-            <span class="project-count">17</span>
-          </article>
-
-          <article class="portfolio-item">
-            <div class="image-box">
+            <article
+              class="card"
+              data-title="팀 프로젝트 (디자인)"
+              data-description="Stat Wolk 리디자인"
+              data-imgs="assets/wolk/1.png,assets/wolk/2.png,assets/wolk/3.png,assets/wolk/4.png,assets/wolk/5.png,assets/wolk/6.png,assets/wolk/7.png,assets/wolk/8.png"
+              data-img-descs="팀 프로젝트 작업 설명입니다., 상세 이미지 2, 상세 이미지 3, 상세 이미지 4, 상세 이미지 5, 상세 이미지 6, 상세 이미지 7, 상세 이미지 8"
+              data-link="https://www.figma.com/proto/HZPGcynLSWSMUt1jeAkWjj/%ED%98%91%EC%97%85-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=15-23&t=GXxRt2EQFBq1ht4K-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A3&starting-point-node-id=15%3A23"
+            >
               <img
-                src="assets/images/pgimg.png"
-                alt="그래픽디자인 작업물 이미지"
+                src="assets/wolk/unnamed.png"
+                alt="Stat Wolk 팀 프로젝트 썸네일"
               />
-            </div>
-            <span class="portfolio-number">05</span>
-            <h3 class="portfolio-label">그래픽디자인</h3>
-            <span class="project-count">21</span>
-          </article>
+              <div class="overlay">
+                <h4>팀 프로젝트 (디자인)</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
 
-          <article class="portfolio-item">
-            <div class="image-box">
-              <img src="assets/images/pgimg.png" alt="기타 작업물 이미지" />
-            </div>
-            <span class="portfolio-number">06</span>
-            <h3 class="portfolio-label">기타</h3>
-            <span class="project-count">25</span>
-          </article>
+            <article
+              class="card"
+              data-title="랜딩페이지 (디자인만)"
+              data-description="곰캠 랜딩페이지."
+              data-imgs="assets/wolk/rd-frame.png"
+              data-img-descs="랜딩페이지 메인 시안"
+              data-link="https://www.figma.com/proto/WlJF3Cv8pxO7JLbZ3fqVzB/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80?node-id=8-140&starting-point-node-id=8%3A140&t=pqBNvT65b7sYwOWf-1"
+            >
+              <img
+                src="assets/wolk/rd-frame 1.png"
+                alt="곰캠 랜딩페이지 디자인 썸네일"
+              />
+              <div class="overlay">
+                <h4>랜딩페이지 (디자인만)</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 앱디자인 -->
+        <div class="portfolio-category">
+          <h3>앱디자인</h3>
+          <div class="portfolio-items">
+            <article
+              class="card"
+              data-title="앱디자인 팀 프로젝트"
+              data-description="밥플릭스"
+              data-imgs="assets/wolk/bfric.png"
+              data-img-descs="앱디자인 팀 프로젝트 상세 이미지"
+              data-link="https://www.figma.com/proto/OGH2s8j1Rt2pdNOfSVF1FO/4%EC%A1%B0-%EB%B0%A5%ED%94%8C%EB%A6%AD%EC%8A%A4-%EC%95%B1%EB%94%94%EC%9E%90%EC%9D%B8?node-id=437-937&t=qyYbe2OtPUdVpJfq-1"
+            >
+              <img
+                src="assets/wolk/Frame.png"
+                alt="밥플릭스 앱디자인 팀 프로젝트 썸네일"
+              />
+              <div class="overlay">
+                <h4>앱디자인 팀 프로젝트</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="앱디자인 개인작업"
+              data-description="개인적으로 진행한 앱디자인 프로젝트입니다."
+              data-imgs="assets/wolk/app-personal.png"
+              data-img-descs="앱디자인 개인작업 상세 이미지"
+              data-link="https://example.com/app-personal"
+            >
+              <img
+                src="assets/wolk/app-personal.png"
+                alt="앱디자인 개인작업 썸네일"
+              />
+              <div class="overlay">
+                <h4>앱디자인 개인작업</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 클론코딩 -->
+        <div class="portfolio-category">
+          <h3>클론코딩</h3>
+          <div class="portfolio-items">
+            <article
+              class="card"
+              data-title="클론코딩 프로젝트 1"
+              data-description="삼성화재 클론코딩"
+              data-imgs="assets/wolk/sclonecode.png"
+              data-img-descs="대표 이미지입니다."
+              data-link="https://www.notion.so/1-23e3669bb29280b38210cf665fb1f3b6"
+            >
+              <img
+                src="assets/wolk/header-logo.svg"
+                alt="삼성화재 클론코딩 썸네일"
+              />
+              <div class="overlay">
+                <h4>클론코딩 프로젝트 1</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="클론코딩 프로젝트 2"
+              data-description="다른 스타일의 클론 코딩 프로젝트입니다."
+              data-imgs="assets/images/clone2.png, assets/images/clone2_detail.png"
+              data-img-descs="대표 이미지입니다., 상세 보기 이미지입니다."
+              data-link="https://example.com/clone2"
+            >
+              <img
+                src="assets/images/clone2.png"
+                alt="클론코딩 프로젝트 2 썸네일"
+              />
+              <div class="overlay">
+                <h4>클론코딩 프로젝트 2</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 카페24 쇼핑몰 -->
+        <div class="portfolio-category">
+          <h3>카페24 쇼핑몰</h3>
+          <div class="portfolio-items">
+            <article
+              class="card"
+              data-title="카페24 쇼핑몰 디자인"
+              data-description="카페24 기반의 쇼핑몰 UI 디자인 프로젝트입니다."
+              data-imgs="assets/images/cafe24.png, assets/images/cafe24_detail.png"
+              data-img-descs="메인 썸네일 이미지입니다., 상세 보기 이미지입니다."
+              data-link="https://example.com/cafe24"
+            >
+              <img src="assets/wolk/cafe24.png" alt="카페24 쇼핑몰 썸네일" />
+              <div class="overlay">
+                <h4>카페24 쇼핑몰 디자인</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 그래픽디자인 -->
+        <div class="portfolio-category">
+          <h3>그래픽디자인</h3>
+          <div class="portfolio-items">
+            <article
+              class="card"
+              data-title="브랜딩 디자인"
+              data-description="브랜드 아이덴티티를 위한 로고, 컬러, 타입 디자인 프로젝트입니다."
+              data-imgs="assets/wolk/brd-dgin.png,assets/wolk/brd-dgin2.png,assets/wolk/brd-dgin3.png,assets/wolk/brd-dgin4.png"
+              data-img-descs="대표 이미지입니다., 로고 시안입니다., 응용 이미지입니다."
+              data-link="https://www.notion.so/23e3669bb29280518728f6956e547923"
+            >
+              <img src="assets/wolk/brd-dgin.png" alt="브랜딩 디자인 썸네일" />
+              <div class="overlay">
+                <h4>브랜딩 디자인</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="SNS 콘텐츠 디자인 1"
+              data-description="SNS 채널용 카드뉴스 디자인. 브랜드에 맞는 톤앤매너와 전달력을 중점으로 작업하였습니다."
+              data-imgs="assets/wolk/sns banner/sns-banner1 (1).jpg,assets/wolk/sns banner/sns-banner1 (2).jpg,assets/wolk/sns banner/sns-banner1 (3).jpg,assets/wolk/sns banner/sns-banner1 (4).jpg"
+              data-img-descs="대표 이미지입니다., 슬라이드 카드 1입니다., 슬라이드 카드 2입니다."
+              data-link="https://example.com/sns1"
+            >
+              <img
+                src="assets/wolk/sns banner/sns-banner1.png"
+                alt="SNS 콘텐츠 디자인 1 썸네일"
+              />
+              <div class="overlay">
+                <h4>SNS 콘텐츠 디자인 1</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="SNS 콘텐츠 디자인 2"
+              data-description="스킨로션"
+              data-imgs="assets/wolk/sns banner/sns-banner2.jpg"
+              data-img-descs="대표 이미지입니다., 상세 이미지 1입니다., 상세 이미지 2입니다."
+              data-link="https://example.com/sns2"
+            >
+              <img
+                src="assets/wolk/sns banner/AdobeStock_487538992.jpeg"
+                alt="SNS 콘텐츠 디자인 2 썸네일"
+              />
+              <div class="overlay">
+                <h4>SNS 콘텐츠 디자인 2</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="상세페이지 디자인 1"
+              data-description="제품 상세페이지 디자인 작업입니다. 제품 특징을 강조하고 사용자가 정보를 쉽게 이해하도록 구성하였습니다."
+              data-imgs="assets/wolk/ssp-1.png"
+              data-img-descs="제품 상세페이지 대표 이미지입니다."
+              data-link="https://www.notion.so/1-23e3669bb29280a18881cea12977841f"
+            >
+              <img
+                src="assets/wolk/ssfag.png"
+                alt="상세페이지 디자인 1 썸네일"
+              />
+              <div class="overlay">
+                <h4>상세페이지 디자인 1</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+
+            <article
+              class="card"
+              data-title="상세페이지 디자인 2"
+              data-description="천연비누 상세페이지"
+              data-imgs="assets/wolk/ssp-2.png"
+              data-img-descs="제품 상세페이지 대표 이미지입니다."
+              data-link="https://www.notion.so/2-23e3669bb29280dc9257c86433054ff1"
+            >
+              <img
+                src="assets/wolk/ssfag-2.jpg"
+                alt="상세페이지 디자인 2 썸네일"
+              />
+              <div class="overlay">
+                <h4>상세페이지 디자인 2</h4>
+                <button class="open-modal-btn">자세히 보기</button>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section id="gallery">
-        <h1>gallery</h1>
-        <div class="gallery">
-          <div class="gallery-item">
-            <img src="assets/images/pgimg.png" alt="Logo 1" />
-            <div class="caption">Client Name</div>
+      <section id="wolk-gallery" class="container">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+          <!-- 갤러리 아이템 1 -->
+          <div
+            class="gallery-item"
+            data-title="딸기설빙 웹 포스터"
+            data-desc="웹 포스터 디자인"
+            data-img="assets/wolk/designing-a-web-poster(1000px)-2.png,assets/wolk/designing-a-web-poste-(800x300px)-2.png,assets/wolk/designing-a-web-poster.png"
+            data-link="#"
+          >
+            <img
+              src="assets/wolk/designing-a-web-poster(1000px)-2.png"
+              alt="썸네일"
+            />
+            <div class="caption">딸기설빙 웹 포스터 디자인</div>
+            <button class="view-btn">자세히보기</button>
           </div>
-          <div class="gallery-item">
-            <img src="assets/images/pgimg.png" alt="Logo 2" />
-            <div class="caption">Client Name</div>
+
+          <!-- 갤러리 아이템 2 -->
+          <div
+            class="gallery-item"
+            data-title="웹 포스터 디자인"
+            data-desc="웹 포스터 디자인."
+            data-img="assets/wolk/webpot2.png,assets/wolk/webpot3.png"
+            data-link="#"
+          >
+            <img src="assets/wolk/webpot2.png" alt="Logo 2" />
+            <div class="caption">웹 포스터 디자인</div>
+            <button class="view-btn">자세히보기</button>
           </div>
-          <div class="gallery-item">
-            <img src="assets/images/pgimg.png" alt="Logo 3" />
-            <div class="caption">Client Name</div>
+
+          <!-- 갤러리 아이템 3 -->
+          <div
+            class="gallery-item"
+            data-title="레이어 실습"
+            data-desc="레이어 실습"
+            data-img="assets/wolk/lay1.png,assets/wolk/lay2.png"
+            data-link="#"
+          >
+            <img src="assets/wolk/lay1.png" alt="Logo 3" />
+            <div class="caption">레이어 실습</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+
+          <!-- 갤러리 아이템 4 -->
+          <div
+            class="gallery-item"
+            data-title="클리핑 마스크"
+            data-desc="클리핑 마스크"
+            data-img="assets/wolk/clfm.png"
+            data-link="#"
+          >
+            <img src="assets/wolk/clfm.png" alt="Logo 3" />
+            <div class="caption">클리핑 마스크</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+
+          <!-- 갤러리 아이템 5 -->
+          <div
+            class="gallery-item"
+            data-title="복고 디자인"
+            data-desc="복고 디자인"
+            data-img="assets/wolk/bogo.pn"
+            data-link="#"
+          >
+            <img src="assets/wolk/bogo.png" alt="Logo 3" />
+            <div class="caption">복고 디자인</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+
+          <!-- 갤러리 아이템 6 -->
+          <div
+            class="gallery-item"
+            data-title="캐릭터 디자인"
+            data-desc="캐릭터 디자인"
+            data-img="assets/wolk/2/Artboard 15.png,assets/wolk/2/Artboard 15-copy-2.png"
+            data-link="#"
+          >
+            <img src="assets/wolk/2/Artboard 15.png" alt="Logo 3" />
+            <div class="caption">캐릭터 디자인</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+
+          <!-- 갤러리 아이템 7 -->
+          <div
+            class="gallery-item"
+            data-title="캐릭터 디자인2"
+            data-desc="캐릭터 디자인2"
+            data-img="assets/wolk/2/main.png,assets/wolk/2/1.png,assets/wolk/2/2.png,assets/wolk/2/3.png,assets/wolk/2/4.png,assets/wolk/2/5.png"
+            data-link="https://www.notion.so/23e3669bb292804f9f73f2b28242efae"
+          >
+            <img src="assets/wolk/2/tab.png" alt="Logo 3" />
+            <div class="caption">캐릭터 디자인2</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+          <div
+            class="gallery-item"
+            data-title="캐릭터 디자인3"
+            data-desc="캐릭터 디자인3"
+            data-img="assets/wolk/2/ziniguni (1).jpg,assets/wolk/2/ziniguni (2).jpg"
+            data-link="https://www.notion.so/23e3669bb292800e9658e01d481d1724"
+          >
+            <img src="assets/wolk/2/ziniguni (1).jpg" alt="Logo 3" />
+            <div class="caption">캐릭터 디자인3</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+          <div
+            class="gallery-item"
+            data-title="코딩1"
+            data-desc="코딩1"
+            data-img="assets/wolk/2/main.png,assets/wolk/2/1.png,assets/wolk/2/2.png,assets/wolk/2/3.png,assets/wolk/2/4.png,assets/wolk/2/5.png"
+            data-link="#"
+          >
+            <img src="assets/wolk/2/tab.png" alt="Logo 3" />
+            <div class="caption">코딩1</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+          <div
+            class="gallery-item"
+            data-title="코딩2"
+            data-desc="코딩2"
+            data-img="assets/wolk/2/ziniguni (1).jpg,assets/wolk/2/ziniguni (2).jpg"
+            data-link="#"
+          >
+            <img src="assets/wolk/2/ziniguni (1).jpg" alt="Logo 3" />
+            <div class="caption">코딩2</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+          <div
+            class="gallery-item"
+            data-title="코딩3"
+            data-desc="코딩3"
+            data-img="assets/wolk/2/ziniguni (1).jpg,assets/wolk/2/ziniguni (2).jpg"
+            data-link="#"
+          >
+            <img src="assets/wolk/2/ziniguni (1).jpg" alt="Logo 3" />
+            <div class="caption">코딩3</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+          <div
+            class="gallery-item"
+            data-title="코딩4"
+            data-desc="코딩4"
+            data-img="assets/wolk/2/ziniguni (1).jpg,assets/wolk/2/ziniguni (2).jpg"
+            data-link="#"
+          >
+            <img src="assets/wolk/2/ziniguni (1).jpg" alt="Logo 3" />
+            <div class="caption">코딩4</div>
+            <button class="view-btn">자세히보기</button>
+          </div>
+
+          <!-- 갤러리 아이템 8 -->
+          <div
+            class="gallery-item"
+            data-title="로고디자인"
+            data-desc="로고디자인"
+            data-img="assets/wolk/2/logo-skr (2).assets/wolk/2/logo-skr (1).png"
+            data-link="https://www.notion.so/23e3669bb292807494e5fe60641bf0d8"
+          >
+            <img src="assets/wolk/2/logo-skr (2).png" alt="Logo 3" />
+            <div class="caption">로고 디자인</div>
+            <button class="view-btn">로고 디자인</button>
+          </div>
+
+          <!-- 갤러리 아이템 9 -->
+          <div
+            class="gallery-item"
+            data-title="리플렛"
+            data-desc="리플렛"
+            data-img="assets/wolk/2/rifr.jpg,assets/wolk/2/rifr-mup.jpg"
+            data-link="https://www.notion.so/23e3669bb29280509910e29a5368f059"
+          >
+            <img src="assets/wolk/2/rifr.jpg" alt="Logo 3" />
+            <div class="caption">리플렛</div>
+            <button class="view-btn">리플렛</button>
+          </div>
+
+          <!-- 갤러리 아이템 10 -->
+          <div
+            class="gallery-item"
+            data-title="명함"
+            data-desc="명함"
+            data-img="assets/wolk/2/rifr.jpg,assets/wolk/2/rifr-mup.jpg"
+            data-link="https://www.notion.so/23e3669bb29280509910e29a5368f059"
+          >
+            <img src="assets/wolk/2/mh (1).png" alt="Logo 3" />
+            <div class="caption">명함</div>
+            <button class="view-btn">명함</button>
+          </div>
+
+          <!-- 갤러리 아이템 11 -->
+          <div
+            class="gallery-item"
+            data-title="포스터"
+            data-desc="포스터"
+            data-img="assets/wolk/2/foster (1).jpg,assets/wolk/2/foster (2).jpg"
+            data-link="https://www.notion.so/23e3669bb29280509910e29a5368f059"
+          >
+            <img src="assets/wolk/2/foster (1).jpg" alt="Logo 3" />
+            <div class="caption">포스터</div>
+            <button class="view-btn">포스터</button>
+          </div>
+
+          <!-- 갤러리 아이템 12 -->
+          <div
+            class="gallery-item"
+            data-title="인포그래픽"
+            data-desc="인포그래픽"
+            data-img="assets/wolk/2/ifog (1).jpg,assets/wolk/2/ifog (2).jpg,assets/wolk/2/ifog (3).jpg"
+            data-link="https://www.notion.so/23e3669bb292805f9fc8cfd321c6ea67"
+          >
+            <img src="assets/wolk/2/ifog (1).jpg" alt="Logo 3" />
+            <div class="caption">인포그래픽</div>
+            <button class="view-btn">인포그래픽</button>
           </div>
         </div>
       </section>
 
       <!-- Contact 섹션 -->
-      <section id="contact">
+      <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
 
-        <form action="#" method="post" class="contact-form">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your name"
-            required
-          />
+        <div class="contact-wrapper">
+          <!-- 연락 폼 -->
+          <form action="#" method="post" class="contact-form" novalidate>
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+              autocomplete="name"
+            />
 
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="your.email@example.com"
-            required
-          />
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your.email@example.com"
+              required
+              autocomplete="email"
+            />
 
-          <label for="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="5"
-            placeholder="Write your message here..."
-            required
-          ></textarea>
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+            <button type="submit">Send Message</button>
+          </form>
 
-          <button type="submit">Send</button>
-        </form>
-
-        <div class="contact-info">
-          <p>Email: your.email@example.com</p>
-          <p>Phone: +82 10-1234-5678</p>
-          <p>Address: Seoul, South Korea</p>
+          <div class="contact-info">
+            <ul>
+              <li>
+                📧 <strong>Email:</strong>
+                <a href="mailto:gusdud0325kp@gmail.com"
+                  >gusdud0325kp@gmail.com</a
+                >
+              </li>
+              <li>
+                📞 <strong>Phone:</strong>
+                <a href="tel:+8210767564088">010-7675-6408</a>
+              </li>
+              <li>📍 <strong>Location:</strong> Seoul, South Korea</li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
 
+    <!-- 모달 구조 (본문 마지막에 위치) -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <div id="modal-images"></div>
+        <a id="modal-link" href="#" target="_blank">바로가기</a>
+      </div>
+    </div>
+
     <footer>
-      <p>© 2025 BHY.</p>
+      <small>&copy; 2025 BHY. All rights reserved.</small>
     </footer>
 
     <!-- JS 연결 -->
     <script src="JS/app.js" defer></script>
     <script src="JS/intro.js" defer></script>
+    <script src="JS/cursor.js" defer></script>
   </body>
 </html>
