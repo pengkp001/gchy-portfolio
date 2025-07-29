@@ -286,8 +286,8 @@
 .about-details ul li::before {
   content: "•";
   position: absolute;
-  left: 0;
-  color: #5ef7ea;
+  left: -20px;
+  color: #ffffff;
   font-weight: bold;
 }
 

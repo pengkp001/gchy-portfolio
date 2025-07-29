@@ -141,7 +141,7 @@ li {
 /* 메뉴 항목 */
 .nav-menu ul {
   display: flex;
-  gap: 24px;
+  gap: 25px;
   list-style: none;
 }
 
@@ -156,9 +156,9 @@ li {
 .nav-menu ul li a::after {
   content: "";
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background-color: #555;
+  width: 10px;
+  height: 10px;
+  background-color: #29c1b7;
   border-radius: 50%;
   bottom: -6px;
   left: 50%;
@@ -167,7 +167,7 @@ li {
 }
 
 .nav-menu ul li a:hover {
-  color: #000;
+  color: #29c1b7;
 }
 
 .nav-menu ul li a:hover::after {
