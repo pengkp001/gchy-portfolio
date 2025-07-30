@@ -27,86 +27,59 @@
     <script src="JS/gallery.js" defer></script>
   </head>
 
-  <body>
-    <!-- <canvas
-      id="sparkle"
-      style="position: fixed; top: 0; left: 0; pointer-events: none"
-    ></canvas> -->
-
-    <header class="menu-bar">
-      <div class="logo">BHY</div>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#intro">Intro</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skill">Skill</a></li>
-          <li><a href="#portfolio">Wolk</a></li>
-          <li><a href="#wolk-gallery">gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+  <body class="locked">
+    <nav class="menu-bar">
+      <ul class="menu-list">
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#wolk-gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="email-box">
+        <div class="email-icons">
+          <a href="mailto:gusdud0325kp@gmail.com">
+            <img src="assets/images/6244438.png" alt="이메일" />
+          </a>
+          <a href="https://github.com/pengkp001/gchy-portfolio" target="_blank">
+            <img src="assets/images/github.png" alt="GitHub" />
+          </a>
+          <a
+            href="https://www.notion.so/23e3669bb292807bb9e6ed4fca297644"
+            target="_blank"
+          >
+            <img src="assets/images/Notion-logo.svg.png" alt="Notion" />
+          </a>
+        </div>
+      </div>
+    </nav>
 
     <main>
-      <section
-        id="intro"
-        class="intro-section space-whale"
-        style="position: relative"
-      >
-        <!-- 동영상 소스는 mp4, webm 두 가지로 넣어 브라우저 호환성 확보 -->
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          class="bubble-video"
-        >
-          <source
-            src="assets/videos/AdobeStock_732285963.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="assets/videos/AdobeStock_732285963.webm"
-            type="video/webm"
-          />
-        </video>
-
-        <!-- 의미 있는 alt 텍스트 추가 -->
+      <section id="intro" class="intro-section">
+        <!-- 푸른 하늘 배경 이미지 -->
         <img
-          src="assets/images/AdobeStock_248490236.jpeg"
-          class="wave-bg"
-          alt="파도 배경 이미지"
+          src="assets/images/AdobeStock_255064595.jpeg"
+          alt="숲"
+          class="forest-bg"
+        />
+        <img
+          src="assets/images/AdobeStock_398497883.jpeg"
+          alt="푸른 하늘"
+          class="sky-bg"
         />
 
-        <div class="stars-overlay">
-          <img src="assets/images/star-2.gif" alt="반짝이는 별 애니메이션" />
-        </div>
+        <!-- 클릭 유도 텍스트 -->
+        <div class="click-guide">Click <br />↓</div>
 
-        <!-- color-overlay가 wave-bg 및 비디오 위에 위치하도록 z-index 조절 필요 -->
-        <div class="color-overlay"></div>
-
-        <div class="intro-content" style="position: relative; z-index: 10">
-          <h1>PORTFOLIO</h1>
-
+        <!-- 아기새 이미지 (정지 + 퍼덕이) -->
+        <div class="baby-bird" onclick="startExperience()">
+          <img src="assets/images/burd.png" class="static-img" alt="아기새" />
           <img
-            src="assets/images/kgr-3.png"
-            alt="고래 이미지를 누르면 소리가 납니다"
-            class="whale-image"
-            style="cursor: pointer"
-            onclick="document.getElementById('squeak-sound').play()"
+            src="assets/images/burd-2.png"
+            class="flap-img"
+            alt="퍼덕이는 아기새"
           />
-
-          <!-- 예시로 버튼 추가 -->
-          <audio
-            id="squeak-sound"
-            src="assets/sounds/squeak.mp3"
-            preload="auto"
-          ></audio>
-        </div>
-
-        <div class="scroll-indicator" aria-label="스크롤을 내려주세요">
-          ↓ Scroll
         </div>
       </section>
     </main>
@@ -128,7 +101,7 @@
                 <div class="card-face front">
                   <img
                     class="profile-img"
-                    src="assets/images/pgimg.png"
+                    src="assets/images/AdobeStock_255064595.jpeg"
                     alt="앞면"
                   />
                   <div class="tooltip">
@@ -152,7 +125,7 @@
 
             <!-- 기본 정보 + 아이콘 -->
             <div class="about-side">
-              <div class="basic-info-box">
+              <!-- <div class="basic-info-box">
                 <h3>기본 정보</h3>
                 <ul>
                   <li><strong>이름 :</strong> 백현영</li>
@@ -160,84 +133,66 @@
                   <li><strong>전화번호 :</strong> 010-7675-64088</li>
                   <li><strong>이메일 :</strong> gusdud0325kp@gmail.com</li>
                 </ul>
-              </div>
-
-              <div class="email-box">
-                <div class="email-icons">
-                  <a href="mailto:gusdud0325kp@gmail.com">
-                    <img src="assets/images/6244438.png" alt="이메일" />
-                  </a>
-                  <a
-                    href="https://github.com/pengkp001/gchy-portfolio"
-                    target="_blank"
-                  >
-                    <img src="assets/images/github.png" alt="GitHub" />
-                  </a>
-                  <a
-                    href="https://www.notion.so/23e3669bb292807bb9e6ed4fca297644"
-                    target="_blank"
-                  >
-                    <img src="assets/images/Notion-logo.svg.png" alt="Notion" />
-                  </a>
-                </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <!-- 소개 문구 -->
-          <p class="about-description">
+          <!-- <p class="about-description">
             상상 속에서 우주를 건너듯,<br />
             사용자 경험을 탐험하는 디자이너입니다.<br />
             디자인과 코드, 그 경계에서 이야기를 만들어보는것을 추구합니다.
-          </p>
-
-          <!-- 배경 영상 -->
-          <video
-            class="profile-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            src="assets/videos/AdobeStock_732285963.mov"
-          ></video>
+          </p> -->
 
           <!-- 상세 정보 -->
-          <div class="about-details">
-            <h3>Educational</h3>
-            <ul>
-              <li>
-                <strong>계명문화대학교</strong> 디지털콘텐츠학부 애니메이션과
-                졸업
-              </li>
-            </ul>
+          <div class="about-details split-layout">
+            <!-- 좌측 컬럼 -->
+            <div class="left-column">
+              <div class="block">
+                <h3>Educational</h3>
+                <ul>
+                  <li>
+                    <strong>계명문화대학교</strong> 디지털콘텐츠학부
+                    애니메이션과 졸업
+                  </li>
+                </ul>
+              </div>
+              <div class="block">
+                <h3>Personal History</h3>
+                <ul>
+                  <li>경력 없음</li>
+                </ul>
+              </div>
+            </div>
 
-            <h3>personal history</h3>
-            <ul>
-              <li>무 경력</li>
-            </ul>
-
-            <h3>Like</h3>
-            <ul>
-              <li>독서</li>
-              <li>요리</li>
-              <li>음악감상</li>
-              <li>일러스트와 드로잉</li>
-            </ul>
-
-            <h3>experience</h3>
-            <ul>
-              <li>
-                <strong>2025.02.28 ~ 2025.08.13</strong><br />
-                그린컴퓨터아트학원<br />
-                디지털디자인 UX/UI 반응형디자인 웹 퍼블리셔 디자인 코딩 (실무자
-                양성훈련)
-              </li>
-              <li>
-                <strong>2018.09.27 ~ 2019.02.28</strong><br />
-                그린컴퓨터아트학원<br />
-                디지털퍼블리싱 편집 (실무자 양성훈련)
-              </li>
-            </ul>
+            <!-- 우측 컬럼 -->
+            <div class="right-column">
+              <div class="block">
+                <h3>Like</h3>
+                <ul>
+                  <li>심플하지 있을거 다 있는 가득 찬 느낌의 디자인</li>
+                  <li>눈에 띄고 화려하지만 아이디어가 빛나는 디자인</li>
+                  <li>색상의 다채로움</li>
+                  <li>일러스트와 드로잉이 돋보이는 디자인</li>
+                </ul>
+              </div>
+              <div class="block">
+                <h3>Experience</h3>
+                <ul>
+                  <li>
+                    <strong>2025.02.28 ~ 2025.08.13</strong><br />
+                    그린컴퓨터아트학원<br />
+                    디지털디자인 UX/UI 반응형디자인 웹 퍼블리셔 디자인 코딩
+                    (실무자 양성훈련)
+                  </li>
+                  <li>
+                    <strong>2018.09.27 ~ 2019.02.28</strong><br />
+                    그린컴퓨터아트학원<br />
+                    디지털퍼블리싱 편집 (실무자 양성훈련)
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -324,6 +279,7 @@
               <div class="overlay">
                 <h4>개인 작업</h4>
                 <button class="open-modal-btn">자세히 보기</button>
+                <a href="https://www.bing.co.kr/">원본사이트</a>
               </div>
             </article>
 
@@ -342,6 +298,7 @@
               <div class="overlay">
                 <h4>팀 프로젝트 (디자인)</h4>
                 <button class="open-modal-btn">자세히 보기</button>
+                <a href="https://starwalk.space/ko">원본사이트</a>
               </div>
             </article>
 
@@ -360,6 +317,13 @@
               <div class="overlay">
                 <h4>랜딩페이지 (디자인만)</h4>
                 <button class="open-modal-btn">자세히 보기</button>
+                <a
+                  href="https://www.gomlab.com/gomcam-screen-recorder?utm_source=google&utm_medium=sa&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C_%EA%B3%B0%EC%BA%A0&gad_source=1&gad_campaignid=14757566825&gbraid=0AAAAADFXvQA45wJKuheMkx-CO55r3Or5U&gclid=CjwKCAjwv5zEBhBwEiwAOg2YKDlBLCOOTfczW-2JZIlS_dbwqpzhyWcVwjcwmEK5zqpY2mxmZvIfYhoCIW4QAvD_BwE"
+                  target="_blank"
+                  class="link-btn"
+                >
+                  원본사이트
+                </a>
               </div>
             </article>
           </div>
@@ -387,7 +351,7 @@
               </div>
             </article>
 
-            <!-- <article
+            <article
               class="card"
               data-title="앱디자인 개인작업"
               data-description="개인적으로 진행한 앱디자인 프로젝트입니다."
@@ -396,14 +360,14 @@
               data-link="https://example.com/app-personal"
             >
               <img
-                src="assets/wolk/app-personal.png"
+                src="assets/images/e0104836_18312025.png"
                 alt="앱디자인 개인작업 썸네일"
               />
               <div class="overlay">
-                <h4>앱디자인 개인작업</h4>
+                <h4>(미완) 앱디자인 개인작업</h4>
                 <button class="open-modal-btn">자세히 보기</button>
               </div>
-            </article> -->
+            </article>
           </div>
         </div>
 
@@ -426,6 +390,7 @@
               <div class="overlay">
                 <h4>클론코딩 프로젝트 1</h4>
                 <button class="open-modal-btn">자세히 보기</button>
+                <a href="https://www.samsungfire.com/">원본사이트</a>
               </div>
             </article>
 
@@ -438,19 +403,20 @@
               data-link="https://example.com/clone2"
             >
               <img
-                src="assets/wolk/monami-colne.PNG"
+                src="assets/images/e0104836_18312025.png"
                 alt="클론코딩 프로젝트 2 썸네일"
               />
               <div class="overlay">
-                <h4>(미완성) 클론코딩 프로젝트 2</h4>
+                <h4>(미완) 클론코딩 프로젝트 2</h4>
                 <button class="open-modal-btn">자세히 보기</button>
+                <a href="https://www.monami.com/index.php">원본사이트</a>
               </div>
             </article>
           </div>
         </div>
 
         <!-- 카페24 쇼핑몰 -->
-        <!-- <div class="portfolio-category">
+        <div class="portfolio-category">
           <h3>카페24 쇼핑몰</h3>
           <div class="portfolio-items">
             <article
@@ -461,14 +427,17 @@
               data-img-descs="메인 썸네일 이미지입니다., 상세 보기 이미지입니다."
               data-link="https://example.com/cafe24"
             >
-              <img src="assets/wolk/cafe24.png" alt="카페24 쇼핑몰 썸네일" />
+              <img
+                src="assets/images/e0104836_18312025.png"
+                alt="카페24 쇼핑몰 썸네일"
+              />
               <div class="overlay">
                 <h4>(미완)카페24 쇼핑몰 디자인</h4>
                 <button class="open-modal-btn">자세히 보기</button>
               </div>
             </article>
           </div>
-        </div> -->
+        </div>
 
         <!-- 그래픽디자인 -->
         <div class="portfolio-category">
@@ -662,28 +631,7 @@
           </div>
 
           <!-- 갤러리 아이템 7 -->
-          <!-- <div
-            class="gallery-item"
-            data-title="캐릭터 디자인2"
-            data-desc="캐릭터 디자인2"
-            data-img="assets/wolk/2/main.png,assets/wolk/2/1.png,assets/wolk/2/2.png,assets/wolk/2/3.png,assets/wolk/2/4.png,assets/wolk/2/5.png"
-            data-link="https://www.notion.so/23e3669bb292804f9f73f2b28242efae"
-          >
-            <img src="assets/wolk/2/tab.png" alt="Logo 3" />
-            <div class="caption">캐릭터 디자인2</div>
-            <button class="view-btn">자세히보기</button>
-          </div>
-          <div
-            class="gallery-item"
-            data-title="캐릭터 디자인3"
-            data-desc="캐릭터 디자인3"
-            data-img="assets/wolk/2/ziniguni (1).jpg,assets/wolk/2/ziniguni (2).jpg"
-            data-link="https://www.notion.so/23e3669bb292800e9658e01d481d1724"
-          >
-            <img src="assets/wolk/2/ziniguni (1).jpg" alt="Logo 3" />
-            <div class="caption">캐릭터 디자인3</div>
-            <button class="view-btn">자세히보기</button>
-          </div> -->
+
           <div
             class="gallery-item"
             data-title="코딩1"
@@ -700,7 +648,7 @@
             data-title="코딩2"
             data-desc="코딩2"
             data-img="assets/wolk/2/code3 (1).png"
-            data-link="#"
+            data-link="https://responsive-page-sample-pengkp001.vercel.app/"
           >
             <img src="assets/wolk/2/code3 (1).png" alt="Logo 3" />
             <div class="caption">코딩2</div>
@@ -756,7 +704,7 @@
           </div>
 
           <!-- 갤러리 아이템 10 -->
-          <!-- <div
+          <div
             class="gallery-item"
             data-title="명함"
             data-desc="명함"
@@ -766,7 +714,7 @@
             <img src="assets/wolk/2/mh (1).png" alt="Logo 3" />
             <div class="caption">명함</div>
             <button class="view-btn">명함</button>
-          </div> -->
+          </div>
 
           <!-- 갤러리 아이템 11 -->
           <div
@@ -797,40 +745,24 @@
       </section>
 
       <!-- Contact 섹션 -->
-      <!-- <section id="contact" class="contact-section">
+      <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
 
         <div class="contact-wrapper">
-          <form action="#" method="post" class="contact-form" novalidate>
+          <form
+            action="https://formspree.io/f/mwpqbwwp"
+            method="POST"
+            class="contact-form"
+          >
             <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-              autocomplete="name"
-            />
+            <input type="text" name="name" required />
 
             <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="your.email@example.com"
-              required
-              autocomplete="email"
-            />
+            <input type="email" name="email" required />
 
             <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              placeholder="Write your message here..."
-              required
-            ></textarea>
-            <button type="submit">Send Message</button>
+            <textarea name="message" required></textarea>
+            <button type="submit">메세지 보내기</button>
           </form>
 
           <div class="contact-info">
@@ -849,7 +781,7 @@
             </ul>
           </div>
         </div>
-      </section> -->
+      </section>
     </main>
 
     <!-- 모달 구조 (본문 마지막에 위치) -->

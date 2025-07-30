@@ -23,7 +23,7 @@
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 80%;
   display: block;
   transition: transform 0.3s ease;
 }

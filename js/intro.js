@@ -1,60 +1,28 @@
-const whale = document.querySelector(".whale-image");
+// 초기 상태에서 body에 locked 클래스 추가
+document.body.classList.add("locked");
 
-window.addEventListener("mousemove", (e) => {
-  const rect = whale.getBoundingClientRect();
-  const mouseX = e.clientX;
-  const mouseY = e.clientY;
+function startExperience() {
+  // 스크롤 가능하게 만들기
+  document.body.classList.remove("locked");
 
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-
-  const distance = Math.sqrt((mouseX - centerX) ** 2 + (mouseY - centerY) ** 2);
-
-  const hoverRadius = 120; // 원하는 거리만큼 조절 (단위: px)
-
-  if (distance < hoverRadius) {
-    whale.classList.add("hover-effect");
-  } else {
-    whale.classList.remove("hover-effect");
-  }
-});
-
-whaleImage.addEventListener("click", () => {
-  if (whaleImage.classList.contains("hovered")) {
-    squeakSound.currentTime = 0;
-    const playPromise = squeakSound.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.log("Audio play error:", error);
-      });
-    }
-
-    whaleImage.style.transition = "transform 0.2s ease";
-    whaleImage.style.transform = "scale(1.1)";
-
-    setTimeout(() => {
-      whaleImage.style.transform = "";
-    }, 200);
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const whale = document.querySelector(".whale-image");
-  const overlay = document.querySelector(".color-overlay");
   const sound = document.getElementById("squeak-sound");
+  if (sound) sound.play();
 
-  whale.addEventListener("click", () => {
-    // 소리 재생
-    sound.currentTime = 0;
-    sound.play();
+  const forestImg = document.querySelector(".overlay img");
+  if (forestImg) {
+    console.log(
+      "Forest img opacity:",
+      window.getComputedStyle(forestImg).opacity
+    );
+    console.log(
+      "Forest img display:",
+      window.getComputedStyle(forestImg).display
+    );
+  }
 
-    // 애니메이션 효과 추가
-    whale.classList.add("clicked");
-    overlay.classList.add("active");
+  document.querySelector("#about").scrollIntoView({ behavior: "smooth" });
+}
 
-    // 1초 후 애니메이션 클래스 제거
-    setTimeout(() => {
-      whale.classList.remove("clicked");
-      overlay.classList.remove("active");
-    }, 1000);
-  });
+window.addEventListener("load", () => {
+  document.body.classList.add("locked");
 });

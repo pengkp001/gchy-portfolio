@@ -68,7 +68,23 @@ body {
   color: #333;
   line-height: 1.6;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 잠금장치 */
+/* body.locked {
+  overflow: hidden;
+  height: 100vh; 
+  position: fixed; 
+  width: 100%;
+} */
 
 body {
   color: #5a4a42;
@@ -84,11 +100,16 @@ h2 {
   align-items: center;
   justify-content: space-around;
   color: #ffffff;
-  text-shadow: 0 0 10px #5ef7ea, 0 0 25px #3de8db, 0 0 40px #32cfc8,
-    0 0 60px #3df0df;
+  /* text-shadow: 0 0 10px #5ef7ea, 0 0 25px #3de8db, 0 0 40px #32cfc8,
+    0 0 60px #3df0df; */
   margin-bottom: 30px;
   letter-spacing: 0.15em;
   padding: 50px 50px;
+}
+
+a {
+  font-family: "Jua", sans-serif;
+  color: #7d7c7c;
 }
 
 h3 {
@@ -115,67 +136,106 @@ li {
   }
 }
 
-/* 고정 메뉴바 */
 .menu-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 16px 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(10px); /* 유리같은 효과 */
-  background-color: rgba(255, 255, 255, 0.5);
+  justify-content: space-between;
+  width: 60%;
+  height: 100px;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e0f0ff; /* 연한 파란색 배경 */
+  border-radius: 100px; /* 둥근 테두리 */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 50px;
+  gap: 50px;
   z-index: 1000;
-  transition: all 0.3s ease;
+  user-select: none;
+  opacity: 70%;
 }
 
-/* 로고 */
-.menu-bar .logo {
+.menu-list {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+}
+
+.menu-list a {
+  font-family: "Pretendard", sans-serif;
   font-size: 30px;
   font-weight: bold;
+  text-align: center;
   color: #333;
-}
-
-/* 메뉴 항목 */
-.nav-menu ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-}
-
-.nav-menu ul li a {
   text-decoration: none;
-  color: #444;
-  font-size: 50px;
-  position: relative;
   transition: color 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 20px;
 }
 
-.nav-menu ul li a::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #29c1b7;
-  border-radius: 50%;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  transition: transform 0.3s ease;
+.menu-list a {
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
-.nav-menu ul li a:hover {
-  color: #29c1b7;
+.menu-list a:hover {
+  color: #ffffff;
+  background-color: skyblue;
+  transform: translateY(-4px); /* 위로 4px 떠오름 */
 }
 
-.nav-menu ul li a:hover::after {
-  transform: translateX(-50%) scale(1);
+.logo {
+  font-weight: bold;
+  font-size: 25px;
+  color: #333;
+  user-select: text;
 }
 
-/* 스크롤 시 바 스타일 변화용 클래스 */
-.menu-bar.scrolled {
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+/* 이메일 & SNS 아이콘 컨테이너 */
+.email-box {
+  display: flex;
+  align-items: center;
+}
+
+.email-icons {
+  position: relative; /* 부모 박스 내에서 정렬 */
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+.email-icons a {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.email-icons a img[alt="이메일"] {
+  width: 36px;
+  height: 36px;
+}
+
+.email-icons a img[alt="GitHub"] {
+  width: 40px;
+  height: 40px;
+}
+
+.email-icons a img[alt="Notion"] {
+  width: 35px;
+  height: 35px;
+  transform: translateY(0px);
+}
+
+.email-icons a img:hover {
+  transform: scale(1.2);
+  filter: brightness(100%) saturate(0) invert(1) drop-shadow(0 0 10px #3de8db);
+}
+
+.email-icons a img[alt="Naver"]:hover {
+  transform: scale(1.2) translateY(-6px);
+  filter: brightness(100%) saturate(0) invert(1) drop-shadow(0 0 10px #3de8db);
 }
