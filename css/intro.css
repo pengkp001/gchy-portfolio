@@ -90,8 +90,19 @@
   z-index: 3;
   opacity: 0;
   top: auto; /* top, bottom 둘 다 쓰면 위치 꼬임 */
+  animation: flapMove 2s ease-in-out infinite;
+  /* 필요하면 크기나 위치 조정 추가 */
 }
 
+@keyframes flapMove {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* 위로 15px 이동 */
+  }
+}
 /* 호버 시 flap 이미지 보이게 */
 .baby-bird:hover .flap-img {
   opacity: 1;

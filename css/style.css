@@ -79,12 +79,12 @@ iframe {
 }
 
 /* 잠금장치 */
-body.locked {
+/* body.locked {
   overflow: hidden;
-  height: 100vh;
-  position: fixed;
+  height: 100vh; 
+  position: fixed; 
   width: 100%;
-}
+} */
 
 body {
   color: #5a4a42;
@@ -142,7 +142,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 40%;
   height: 100px;
   top: 30px;
   left: 50%;
