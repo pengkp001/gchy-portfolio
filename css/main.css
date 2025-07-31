@@ -1,7 +1,11 @@
+#about {
+  width: 100%;
+  height: 100%;
+}
+
 .about-right {
   position: relative;
   width: 100%;
-  height: 100vh;
   background: linear-gradient(#e4f297, #97f2db);
   border-radius: 0; /* 둥근 모서리 없애서 꽉 찬 느낌 */
   box-shadow: none; /* 그림자 제거해서 깔끔하게 */
@@ -18,13 +22,12 @@
 .about-content {
   position: relative; /* 기준점 지정 */
   width: 100%;
-  height: 100vh;
   margin: 0 auto;
   text-align: center;
 }
 
 .about-side {
-  display: flex;
+  /* display: flex; */
   justify-content: flex-start; /* space-between 대신 flex-start로 변경 */
   align-items: flex-start;
   gap: 20px;
@@ -111,6 +114,13 @@
   filter: brightness(1.1);
 }
 
+.portfolio-items-2 {
+  position: absolute;
+  left: 340px;
+  max-width: 500px;
+  opacity: 80%;
+}
+
 /* 툴팁 기본 스타일 */
 .tooltip {
   visibility: hidden;
@@ -189,8 +199,8 @@
 .block h3 {
   font-size: 50px;
   color: #009b96;
-  margin-bottom: 12px;
-  padding-bottom: 5px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 3px solid #ffffff;
   font-weight: bold;
 }
@@ -205,7 +215,7 @@
 .block ul li {
   font-size: 30px;
   font-family: "Nanum Pen Script", cursive;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 @media (max-width: 768px) {
@@ -214,43 +224,92 @@
   }
 }
 
-/* 스킬 섹션 */
-#skill {
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* transform: translate(0, 230%); */
+}
+
+.skills-list li {
+  /* width: calc(50% - 20px); */
+  display: flex;
+  justify-content: center;
+}
+
+.skills-list figure {
   position: relative;
-  width: 100%;
-  padding: 4rem 1rem 6rem; /* 위 아래 패딩 늘림 */
-  background: linear-gradient(rgb(173, 239, 255), rgba(255, 255, 255, 0.6));
-  color: #95f3ff;
-  text-align: center;
-  box-sizing: border-box;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  padding: 5px;
+  background: none;
+  box-shadow: 0 4px 20px rgba(61, 232, 219, 0.15);
+  user-select: none;
+  overflow: visible;
 }
 
-#skill h2 {
-  /* font-size: 2.8rem; */
-  /* font-weight: 300; */
-  color: #ffffff;
-  /* margin-bottom: 36px; */
-  text-shadow: 0 0 8px #3de8dbaa, 0 0 20px #3de8db88;
-  /* letter-spacing: 2px; */
+.skills-list figure:hover {
+  transform: scale(1.1);
+  /* box-shadow: 0 8px 30px rgba(239, 255, 173, 0.6),
+    0 0 20px rgba(61, 232, 219, 0.6); */
+  background: rgba(232, 255, 128, 0.521);
+  border-radius: 100px;
+  width: 150px;
+  height: 100%;
 }
 
-#skill {
-  position: relative;
-  width: 100%;
-  padding: 4rem 1rem 6rem;
-  background: linear-gradient(rgb(173, 239, 255), rgba(255, 255, 255, 0.6));
-  color: #95f3ff;
-  text-align: center;
-  box-sizing: border-box;
+/* 이미지 스타일 */
+.skills-list img {
+  width: 100px;
+  filter: drop-shadow(0 0 6px #3de8dbcc);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: filter 0.3s ease;
 }
 
+.skills-list figure:hover img {
+  filter: drop-shadow(0 0 12px #3de8dbdd);
+}
+
+/* 캡션 */
+.skills-list figcaption {
+  font-weight: bold;
+  font-size: 50px;
+  color: #ffffffdd;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+/* 상세 이미지 */
 .skill-detail {
   max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
-  padding: 0;
-  margin-top: 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+figure[aria-expanded="true"] .skill-detail {
+  max-height: 500px;
+  padding: 1rem 1rem 2rem;
+}
+
+.skill-detail-img {
+  opacity: 1;
+  visibility: hidden;
+  transform: translateY(5px) scale(1);
+  transition: all 0.3s ease;
+}
+
+figure[aria-expanded="true"] .skill-detail-img,
+figure:hover .skill-detail-img {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1.4);
 }
 
 .skills-list figure:hover .skill-detail {
@@ -260,137 +319,7 @@
   margin-top: 10px;
 }
 
-.skills-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.skills-list li {
-  flex: 1 1 200px;
-}
-
-.skills-list figure {
-  cursor: pointer;
-  margin: 0;
-  padding: 10px;
-  border-radius: 10px;
-  background: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  overflow: visible;
-}
-
-.skills-list figure:hover {
-  transform: translateY(-1px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(61, 232, 219, 0.6),
-    0 0 20px rgba(61, 232, 219, 0.6);
-  background: rgba(246, 255, 254, 0.25);
-}
-
-.skills-list img {
-  width: 200px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 6px #3de8dbcc);
-  margin-bottom: 10px;
-  transition: filter 0.3s ease;
-}
-
-.skills-list figure:hover img {
-  filter: drop-shadow(0 0 12px #3de8dbdd);
-}
-
-.skills-list figure:hover img {
-  filter: drop-shadow(0 0 12px #3de8dbdd);
-}
-
-.skill-detail img {
-  max-width: 200%;
-  border-radius: 8px;
-}
-
-.skill-detail {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, padding 0.5s ease;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-figure[aria-expanded="true"] .skill-detail {
-  max-height: 500px; /* 이미지 높이 맞게 조절 */
-  padding: 1rem 1rem 2rem;
-}
-
-.skill-detail-img {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px) scale(1);
-  transition: all 0.3s ease;
-}
-
-figure[aria-expanded="true"] .skill-detail-img {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1.4);
-}
-
-.skills-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.skills-list li {
-  flex: 1 1 200px;
-}
-
-.skills-list figure {
-  position: relative; /* 배경 레이어용 */
-  margin: 0;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 10px;
-  padding: 5px;
-  /* 투명색 대신 투명 배경 제거 */
-  background: none;
-  /* box-shadow: 0 4px 20px rgba(61, 232, 219, 0.15); */
-  user-select: none;
-  overflow: hidden; /* 둥근 모서리 안보이게 */
-}
-
-.skills-list figure:hover {
-  transform: translateY(-1px) scale(1.1);
-  box-shadow: 0 8px 30px rgba(61, 232, 219, 0.6),
-    0 0 20px rgba(61, 232, 219, 0.6);
-  background: rgba(246, 255, 254, 0.25);
-}
-
-/* figure에 마우스를 올리면 상세 이미지가 나타남 */
-figure:hover .skill-detail-img {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1.4); /* 크기 확대 */
-}
-
-figure {
-  cursor: pointer;
-  margin: 0;
-  position: relative;
-}
-
-.skills-list figcaption {
-  font-weight: bold;
-  font-size: 50px;
-  color: #ffffffdd;
-  letter-spacing: 0.03em;
-  user-select: none;
-}
+/* 인포 */
 
 .contact-info {
   background-color: #1a2e55; /* 기존 배경 중 어두운 푸른색 계열 */
