@@ -85,8 +85,8 @@ iframe {
 /* 잠금장치 */
 /* body.locked {
   overflow: hidden;
-  height: 100vh; 
-  position: fixed; 
+  height: 100vh;
+  position: fixed;
   width: 100%;
 } */
 
@@ -139,8 +139,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 35%;
-  height: 100px;
+  width: 50%;
+  height: 80px;
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
@@ -207,14 +207,15 @@ li {
 }
 
 .email-icons a {
+  width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
 .email-icons a img[alt="이메일"] {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 }
 
 .email-icons a img[alt="GitHub"] {
