@@ -11,14 +11,15 @@
 .work-section .subtitle {
   margin: 0 0 18px;
   color: var(--muted);
+  font-family: "Cafe24Ohsquare";
 }
 
 /* ===== Tabs (필요 시) ===== */
 .tabs {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
 }
 .tabs .tab {
   appearance: none;
@@ -29,6 +30,8 @@
   padding: 10px 14px;
   border-radius: 12px;
   transition: 0.2s ease;
+  font-family: "Cafe24Dongdong";
+  font-weight: bold;
 }
 .tabs .tab[aria-selected="true"] {
   color: var(--text);
@@ -63,7 +66,7 @@
   background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 .work-card:hover {
   transform: translateY(-5px);
@@ -292,20 +295,31 @@
   border-color: #3a8edc;
 }
 
-/* 링크 버튼 */
-.modal-link-btn {
-  background-color: #3a8edc;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 15px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
+/* 모달 내부 링크 버튼들 */
+#workModal .linkbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 16px;
 }
 
-.modal-link-btn:hover {
-  background-color: #7f76ff;
+#workModal .modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  background: #3a8edc;
+  color: #fff;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+#workModal .modal-link-btn:hover {
+  background: #29c1b7;
+  transform: translateY(-1px);
 }
 
 /* Work 모달: 기본은 숨김 */
@@ -367,12 +381,14 @@
 #workModal .link-btn {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 5px 10px;
+  text-align: center;
   border-radius: 10px;
   background: #0f1836;
   color: #eaf0ff;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  /* border: 1px solid rgba(255, 255, 255, 0.12); */
+  font-family: "Cafe24Ohsquare";
 }
 #workModal .link-btn:hover {
   border-color: rgba(255, 255, 255, 0.28);

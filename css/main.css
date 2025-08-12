@@ -49,14 +49,6 @@
   box-sizing: border-box;
 }
 
-.profile-container {
-  width: 300px;
-  height: 300px;
-  margin: 0 auto; /* 가로 가운데 */
-  position: relative;
-  z-index: 10;
-}
-
 /* 프로필 이미지 컨테이너 */
 .profile-container {
   width: 300px;
@@ -116,8 +108,9 @@
 
 .portfolio-items-2 {
   position: absolute;
-  left: 340px;
-  max-width: 500px;
+  left: 300px;
+  max-width: 460px;
+  top: 0;
   opacity: 80%;
 }
 
@@ -182,7 +175,7 @@
   /* flex-wrap: wrap; */
   gap: 50px;
   max-width: 100%;
-  margin: 0 10% 50px;
+  margin: 0 30px 50px;
   padding: 0 20px;
   color: #1e5d5a;
 }
@@ -193,16 +186,19 @@
 }
 
 .block {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .block h3 {
-  font-size: 50px;
+  font-size: 40px;
   color: #009b96;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 3px solid #ffffff;
-  font-weight: bold;
+  margin-bottom: 10px;
+  /* padding-bottom: 10px; */
+  /* border-bottom: 3px solid #ffffff; */
+  background-color: #fff;
+  border-radius: 100px;
+  font-family: "Jua", sans-serif;
+  text-align: center;
 }
 
 .block ul {
@@ -213,15 +209,28 @@
 }
 
 .block ul li {
+  margin-top: 20px;
+  margin-left: 100px;
   font-size: 30px;
-  font-family: "Nanum Pen Script", cursive;
-  /* margin-bottom: 10px; */
+  font-family: "Cafe24Ssurround";
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 @media (max-width: 768px) {
   .about-details.split-layout {
     flex-direction: column;
   }
+}
+
+/* 3D 공간 부여 */
+.profile-container {
+  perspective: 1000px;
+}
+
+/* 호버하면 카드 뒤집기 */
+.profile-container:hover .profile-card {
+  transform: rotateY(180deg);
 }
 
 .skills-list {
@@ -244,7 +253,7 @@
 .skills-list figure {
   position: relative;
   margin: 0;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 10px;
   padding: 5px;
@@ -254,15 +263,13 @@
   overflow: visible;
 }
 
-.skills-list figure:hover {
-  transform: scale(1.1);
-  /* box-shadow: 0 8px 30px rgba(239, 255, 173, 0.6),
-    0 0 20px rgba(61, 232, 219, 0.6); */
-  background: rgba(232, 255, 128, 0.521);
-  border-radius: 100px;
-  width: 150px;
-  height: 100%;
-}
+/* .skills-list figure:hover {
+  width: auto;
+  height: auto;
+  transform: scale(1.06);
+  will-change: transform;
+  transform-origin: center;
+} */
 
 /* 이미지 스타일 */
 .skills-list img {

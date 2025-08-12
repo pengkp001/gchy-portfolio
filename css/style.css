@@ -55,6 +55,30 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Cafe24Ssurround";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cafe24Ohsquare";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cafe24Dongdong";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -83,12 +107,12 @@ iframe {
 }
 
 /* 잠금장치 */
-body.locked {
+/* body.locked {
   overflow: hidden;
   height: 100vh;
   position: fixed;
   width: 100%;
-}
+} */
 
 h2 {
   font-family: "Jua", sans-serif;
@@ -106,18 +130,19 @@ h2 {
 }
 
 a {
-  font-family: "Jua", sans-serif;
+  font-family: "Cafe24Dongdong";
   color: #7d7c7c;
 }
 
 h3 {
-  font-family: "Gloria Hallelujah", cursive;
-  font-size: 50px;
+  font-family: "Cafe24Ohsquare";
+  font-size: 30px;
+  letter-spacing: -2px; /* 자간 줄이기 */
 }
 
 p {
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 50px;
+  font-family: "Cafe24Ohsquare";
+  font-size: 20px;
 }
 
 li {

@@ -112,3 +112,163 @@
 .baby-bird:hover .static-img {
   opacity: 0;
 }
+
+/* ========== 큰 데스크톱 (≥1920px) ========== */
+@media (min-width: 1920px) {
+  .click-guide {
+    font-size: 64px;
+    bottom: 62%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 360px;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 360px;
+  }
+  .sky-bg {
+    width: 180%;
+    opacity: 0.6;
+  }
+}
+
+/* ========== 큰 데스크톱 (≥1600px) ========== */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .click-guide {
+    font-size: 58px;
+    bottom: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 340px;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 340px;
+  }
+  .sky-bg {
+    width: 180%;
+    opacity: 0.6;
+  }
+}
+
+/* ========== 작은 데스크톱 (1200px ~ 1599px) ========== */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .click-guide {
+    font-size: 50px;
+    bottom: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 300px;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 300px;
+  }
+  .sky-bg {
+    width: 200%;
+  }
+}
+
+/* ========== 태블릿 (769px ~ 1199px) ========== */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .click-guide {
+    font-size: 42px;
+    bottom: 56%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 260px;
+    bottom: 26%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 260px;
+  }
+  .static-img {
+    top: -70px;
+  }
+  .sky-bg {
+    width: 180%;
+  }
+}
+
+/* ========== 모바일 대 (481px ~ 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+  .click-guide {
+    font-size: 34px;
+    bottom: 54%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 220px;
+    bottom: 24%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 220px;
+    bottom: -48px;
+  }
+  .static-img {
+    top: -60px;
+  }
+  .sky-bg {
+    width: 160%;
+  }
+}
+
+/* ========== 모바일 소 (≤480px) ========== */
+@media (max-width: 480px) {
+  .click-guide {
+    font-size: 26px;
+    bottom: 52%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .baby-bird {
+    width: 180px;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .flap-img {
+    width: 180px;
+    bottom: -40px;
+  }
+  .static-img {
+    top: -48px;
+  }
+  .sky-bg {
+    width: 140%;
+    opacity: 0.65;
+  }
+}
+
+/* ========== 모션 민감 사용자 배려 ========== */
+@media (prefers-reduced-motion: reduce) {
+  .click-guide {
+    animation: none;
+  }
+  .flap-img {
+    animation: none;
+  }
+  .static-img,
+  .flap-img {
+    transition: opacity 0.001s linear;
+  }
+}
