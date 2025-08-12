@@ -286,6 +286,7 @@
 
 /* 캡션 */
 .skills-list figcaption {
+  font-family: "Cafe24Ssurround";
   font-weight: bold;
   font-size: 50px;
   color: #ffffffdd;

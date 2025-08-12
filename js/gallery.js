@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         a.href = link;
         a.target = "_blank";
         a.rel = "noopener";
-        a.textContent = "관련 링크 열기 ↗";
+        a.textContent = "사이트 보기";
         mLinks.appendChild(a);
       }
 
@@ -117,3 +117,99 @@ document.getElementById("modal").addEventListener("click", (e) => {
     document.body.style.overflow = "";
   }
 });
+
+// 버튼 이름 매핑
+const linkLabelMap = {
+  코딩: "코딩 보기",
+  로고: "브랜드 노션 ↗",
+  리플렛: "작업 보기 ↗",
+  명함: "디자인 보기 ↗",
+  포스터: "포스터 보기 ↗",
+  인포그래픽: "인포그래픽 보기 ↗",
+  default: "바로가기 ↗",
+};
+
+// 모달 열기 함수
+function openGalleryModal(item) {
+  const title = item.dataset.title || "";
+  const desc = item.dataset.desc || "";
+  const imgs = (item.dataset.img || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const link = item.dataset.link || "#";
+
+  document.getElementById("mTitle").textContent = title;
+  document.getElementById("mDesc").textContent = desc;
+
+  const mImgs = document.getElementById("mImgs");
+  mImgs.innerHTML = "";
+  imgs.forEach((src) => {
+    const im = new Image();
+    im.src = src;
+    im.alt = title;
+    im.style.width = "100%";
+    mImgs.appendChild(im);
+  });
+
+  // 버튼 라벨 결정
+  let label = item.dataset.linkLabel; // dataset 직접 입력 우선
+  if (!label) {
+    // 매핑에서 찾기 (title에 특정 키워드 포함되면)
+    const found = Object.keys(linkLabelMap).find((key) => title.includes(key));
+    label = linkLabelMap[found] || linkLabelMap.default;
+  }
+
+  // 버튼 만들기
+  const mLinks = document.getElementById("mLinks");
+  mLinks.innerHTML = "";
+  if (link && link !== "#") {
+    const a = document.createElement("a");
+    a.href = link;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = label;
+    a.className = "modal-link-btn";
+    mLinks.appendChild(a);
+  }
+
+  document.getElementById("workModal").classList.remove("hidden");
+}
+
+function openGalleryModal(item) {
+  const title = item.dataset.title || "";
+  const desc = item.dataset.desc || "";
+  const imgs = (item.dataset.img || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const link = item.dataset.link || "#";
+
+  document.getElementById("mTitle").textContent = title;
+  document.getElementById("mDesc").textContent = desc;
+
+  const mImgs = document.getElementById("mImgs");
+  mImgs.innerHTML = "";
+  imgs.forEach((src) => {
+    const im = new Image();
+    im.src = src;
+    im.alt = title;
+    im.style.width = "100%";
+    mImgs.appendChild(im);
+  });
+
+  // 링크 버튼 표시 조건
+  const mLinks = document.getElementById("mLinks");
+  mLinks.innerHTML = "";
+  if (title.includes("코딩") && link && link !== "#") {
+    const a = document.createElement("a");
+    a.href = link;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = "코딩 링크로 가기";
+    a.className = "modal-link-btn";
+    mLinks.appendChild(a);
+  }
+
+  document.getElementById("workModal").classList.remove("hidden");
+}
