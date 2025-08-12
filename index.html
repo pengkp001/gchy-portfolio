@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/cursor.css" />
     <link rel="stylesheet" href="css/card.css" />
 
-    <!-- 구글 폰트 -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,10 +21,12 @@
       rel="stylesheet"
     />
 
+    <!-- JS: 소문자 폴더로 통일 -->
     <script src="js/cursor.js" defer></script>
-    <script src="JS/app.js" defer></script>
-    <script src="JS/intro.js" defer></script>
-    <script src="JS/gallery.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/intro.js" defer></script>
+    <script src="js/card.js" defer></script>
+    <script src="js/gallery.js" defer></script>
   </head>
 
   <body class="locked">
@@ -32,7 +34,7 @@
       <ul class="menu-list">
         <li><a href="#intro">Intro</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#work">Work</a></li>
         <li><a href="#wolk-gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -54,39 +56,37 @@
       </div>
     </nav>
 
-    <main>
-      <section id="intro" class="intro-section">
-        <!-- 푸른 하늘 배경 이미지 -->
-        <img
-          src="assets/images/AdobeStock_255064595.jpeg"
-          alt="숲"
-          class="forest-bg"
-        />
-        <img
-          src="assets/images/AdobeStock_398497883.jpeg"
-          alt="푸른 하늘"
-          class="sky-bg"
-        />
+    <section id="intro" class="intro-section">
+      <!-- 푸른 하늘 배경 이미지 -->
+      <img
+        src="assets/images/AdobeStock_255064595.jpeg"
+        alt="숲"
+        class="forest-bg"
+      />
+      <img
+        src="assets/images/AdobeStock_398497883.jpeg"
+        alt="푸른 하늘"
+        class="sky-bg"
+      />
 
-        <!-- 클릭 유도 텍스트 -->
-        <div class="click-guide">Click <br />↓</div>
+      <!-- 클릭 유도 텍스트 -->
+      <div class="click-guide">Click <br />↓</div>
 
-        <!-- 아기새 이미지 (정지 + 퍼덕이) -->
-        <div class="baby-bird" onclick="startExperience()">
-          <img src="assets/images/burd.png" class="static-img" alt="아기새" />
-          <img
-            src="assets/images/burd.gif"
-            class="flap-img"
-            alt="퍼덕이는 아기새"
-          />
-        </div>
-      </section>
-    </main>
+      <!-- 아기새 이미지 (정지 + 퍼덕이) -->
+      <div class="baby-bird" onclick="startExperience()">
+        <img src="assets/images/burd.png" class="static-img" alt="아기새" />
+        <img
+          src="assets/images/burd.gif"
+          class="flap-img"
+          alt="퍼덕이는 아기새"
+        />
+      </div>
+    </section>
 
     <!-- About Me 섹션 -->
     <main>
-      <section>
-        <div id="about" class="about-right fade-in-up">
+      <section id="about">
+        <div class="about-right fade-in-up">
           <h2 class="neon-title">About Me</h2>
 
           <div class="about-content">
@@ -105,7 +105,8 @@
                   />
 
                   <div class="tooltip">
-                    안녕하세요!<br />제 포트폴리오에 오신 것을 환영해요!
+                    반갑습니다! 심플하고 귀여운 디자인으로 <br />사용자에게
+                    즐거움을 전하는 디자이너입니다.
                   </div>
                 </div>
 
@@ -117,7 +118,9 @@
                     alt="뒷면"
                   />
                   <div class="tooltip">
-                    하루하루 배워가며<br />디자이너로 자라나는 중입니다.
+                    작은 깃털 하나하나가 모여 나만의 날개가 됩니다.
+                    <br />
+                    오늘도 한 걸음씩, 더 높이 날아가겠습니다.
                   </div>
                 </div>
                 <img
@@ -131,9 +134,7 @@
 
           <!-- 소개 문구 -->
           <p class="about-description">
-            (수정필요) 상상 속에서 우주를 건너듯,<br />
-            사용자 경험을 탐험하는 디자이너입니다.<br />
-            디자인과 코드, 그 경계에서 이야기를 만들어보는것을 추구합니다.
+            아직은 서툴지만, 매일 조금씩 날개를 펼치며 성장하는 디자이너입니다.
           </p>
 
           <!-- 상세 정보 -->
@@ -264,280 +265,333 @@
         </div>
       </section>
 
-      <!-- Portfolio 섹션 -->
-      <section id="portfolio">
-        <h2>Wolk</h2>
+      <!-- Work 섹션 (정리된 카테고리 + 그리드 + 모달 트리거 전용 HTML) -->
+      <section id="work" class="work-section">
+        <h2>Work</h2>
+        <p class="subtitle">카테고리</p>
 
-        <!-- 웹디자인 -->
-        <div class="portfolio-category">
-          <h3>웹디자인</h3>
-          <div class="portfolio-items">
-            <!-- 개인 작업 -->
-            <article
-              class="card"
-              data-title="개인 프로젝트"
-              data-description="빙그레 리디자인"
-              data-imgs="assets/wolk/b-site.png, assets/wolk/b-mg.png, assets/wolk/b-wf.png"
-              data-img-descs="첫 번째 이미지 설명입니다., 두 번째 이미지 설명입니다., 세 번째 이미지 설명입니다."
-              data-link="https://www.figma.com/proto/wCujp9dGio3nCwuCpgiH9v/Untitled?node-id=110-221&t=lYuKrg0Kf4EU1xT5-0&scaling=min-zoom&content-scaling=fixed&page-id=11%3A126&starting-point-node-id=110%3A167"
-            >
-              <img src="assets/wolk/b.jpg" alt="빙그레 리디자인 작업 썸네일" />
-              <div class="overlay">
-                <h4>개인 작업</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-                <a href="https://www.bing.co.kr/">원본사이트</a>
-              </div>
-            </article>
-
-            <article
-              class="card"
-              data-title="팀 프로젝트 (디자인)"
-              data-description="Stat Wolk 리디자인"
-              data-imgs="assets/wolk/1.png,assets/wolk/2.png,assets/wolk/3.png,assets/wolk/4.png,assets/wolk/5.png,assets/wolk/6.png,assets/wolk/7.png,assets/wolk/8.png"
-              data-img-descs="팀 프로젝트 작업 설명입니다., 상세 이미지 2, 상세 이미지 3, 상세 이미지 4, 상세 이미지 5, 상세 이미지 6, 상세 이미지 7, 상세 이미지 8"
-              data-link="https://www.figma.com/proto/HZPGcynLSWSMUt1jeAkWjj/%ED%98%91%EC%97%85-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=15-23&t=GXxRt2EQFBq1ht4K-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A3&starting-point-node-id=15%3A23"
-            >
-              <img
-                src="assets/wolk/unnamed.png"
-                alt="Stat Wolk 팀 프로젝트 썸네일"
-              />
-              <div class="overlay">
-                <h4>팀 프로젝트 (디자인)</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-                <a href="https://starwalk.space/ko">원본사이트</a>
-              </div>
-            </article>
-
-            <article
-              class="card"
-              data-title="랜딩페이지 (디자인만)"
-              data-description="곰캠 랜딩페이지."
-              data-imgs="assets/wolk/rd-frame.png"
-              data-img-descs="랜딩페이지 메인 시안"
-              data-link="https://www.figma.com/proto/WlJF3Cv8pxO7JLbZ3fqVzB/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80?node-id=8-140&starting-point-node-id=8%3A140&t=pqBNvT65b7sYwOWf-1"
-            >
-              <img
-                src="assets/wolk/rd-frame 1.png"
-                alt="곰캠 랜딩페이지 디자인 썸네일"
-              />
-              <div class="overlay">
-                <h4>랜딩페이지 (디자인만)</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-                <a
-                  href="https://www.gomlab.com/gomcam-screen-recorder?utm_source=google&utm_medium=sa&utm_campaign=%EB%B8%8C%EB%9E%9C%EB%93%9C_%EA%B3%B0%EC%BA%A0&gad_source=1&gad_campaignid=14757566825&gbraid=0AAAAADFXvQA45wJKuheMkx-CO55r3Or5U&gclid=CjwKCAjwv5zEBhBwEiwAOg2YKDlBLCOOTfczW-2JZIlS_dbwqpzhyWcVwjcwmEK5zqpY2mxmZvIfYhoCIW4QAvD_BwE"
-                  target="_blank"
-                  class="link-btn"
-                >
-                  원본사이트
-                </a>
-              </div>
-            </article>
-          </div>
+        <!-- 카테고리 탭 (필터) -->
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" data-filter="all" aria-selected="true">
+            전체
+          </button>
+          <button class="tab" role="tab" data-filter="web">웹디자인</button>
+          <button class="tab" role="tab" data-filter="app">앱디자인</button>
+          <button class="tab" role="tab" data-filter="clone">클론코딩</button>
+          <button class="tab" role="tab" data-filter="shop">
+            카페24 쇼핑몰
+          </button>
+          <button class="tab" role="tab" data-filter="graphic">
+            그래픽디자인
+          </button>
         </div>
 
-        <!-- 앱디자인 -->
-        <div class="portfolio-category">
-          <h3>앱디자인</h3>
-          <div class="portfolio-items">
-            <article
-              class="card"
-              data-title="앱디자인 팀 프로젝트"
-              data-description="밥플릭스"
-              data-imgs="assets/wolk/bfric.png"
-              data-img-descs="앱디자인 팀 프로젝트 상세 이미지"
-              data-link="https://www.figma.com/proto/OGH2s8j1Rt2pdNOfSVF1FO/4%EC%A1%B0-%EB%B0%A5%ED%94%8C%EB%A6%AD%EC%8A%A4-%EC%95%B1%EB%94%94%EC%9E%90%EC%9D%B8?node-id=437-937&t=qyYbe2OtPUdVpJfq-1"
-            >
-              <img
-                src="assets/wolk/Frame.png"
-                alt="밥플릭스 앱디자인 팀 프로젝트 썸네일"
-              />
-              <div class="overlay">
-                <h4>앱디자인 팀 프로젝트</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
+        <!-- 카드 그리드 -->
+        <div class="work-grid">
+          <!-- 웹디자인 -->
+          <article
+            class="work-card"
+            data-cat="web"
+            data-title="개인 프로젝트 — 빙그레 리디자인"
+            data-description="브랜드 톤에 맞춘 레이아웃 리디자인과 핵심 페이지 개선."
+            data-imgs="assets/wolk/b-site.png,assets/wolk/b-mg.png,assets/wolk/b-wf.png"
+            data-link="https://www.figma.com/proto/wCujp9dGio3nCwuCpgiH9v/Untitled?node-id=110-221&t=lYuKrg0Kf4EU1xT5-0&scaling=min-zoom&content-scaling=fixed&page-id=11%3A126&starting-point-node-id=110%3A167"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/b.jpg"
+              alt="빙그레 리디자인 작업 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">웹디자인 · 개인 작업</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+              <a
+                class="ext"
+                href="https://www.bing.co.kr/"
+                target="_blank"
+                rel="noopener"
+                >원본사이트</a
+              >
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="앱디자인 개인작업"
-              data-description="개인적으로 진행한 앱디자인 프로젝트입니다."
-              data-imgs="assets/wolk/app-personal.png"
-              data-img-descs="앱디자인 개인작업 상세 이미지"
-              data-link="https://example.com/app-personal"
-            >
-              <img
-                src="assets/images/e0104836_18312025.png"
-                alt="앱디자인 개인작업 썸네일"
-              />
-              <div class="overlay">
-                <h4>(미완) 앱디자인 개인작업</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
-          </div>
-        </div>
+          <article
+            class="work-card"
+            data-cat="web"
+            data-title="팀 프로젝트 — Stat Wolk 리디자인"
+            data-description="천체 관측 테마 사이트의 IA/비주얼 리디자인."
+            data-imgs="assets/wolk/1.png,assets/wolk/2.png,assets/wolk/3.png,assets/wolk/4.png,assets/wolk/5.png,assets/wolk/6.png,assets/wolk/7.png,assets/wolk/8.png"
+            data-link="https://www.figma.com/proto/HZPGcynLSWSMUt1jeAkWjj/%ED%98%91%EC%97%85-%EC%9B%B9-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=15-23&t=GXxRt2EQFBq1ht4K-0&scaling=min-zoom&content-scaling=fixed&page-id=2%3A3&starting-point-node-id=15%3A23"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/unnamed.png"
+              alt="Stat Wolk 팀 프로젝트 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">웹디자인 · 팀 프로젝트</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+              <a
+                class="ext"
+                href="https://starwalk.space/ko"
+                target="_blank"
+                rel="noopener"
+                >원본사이트</a
+              >
+            </div>
+          </article>
 
-        <!-- 클론코딩 -->
-        <div class="portfolio-category">
-          <h3>클론코딩</h3>
-          <div class="portfolio-items">
-            <article
-              class="card"
-              data-title="클론코딩 프로젝트 1"
-              data-description="삼성화재 클론코딩"
-              data-imgs="assets/wolk/sclonecode.png"
-              data-img-descs="대표 이미지입니다."
-              data-link="https://www.notion.so/1-23e3669bb29280b38210cf665fb1f3b6"
-            >
-              <img
-                src="assets/wolk/header-logo.svg"
-                alt="삼성화재 클론코딩 썸네일"
-              />
-              <div class="overlay">
-                <h4>클론코딩 프로젝트 1</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-                <a href="https://www.samsungfire.com/">원본사이트</a>
-              </div>
-            </article>
+          <article
+            class="work-card"
+            data-cat="web"
+            data-title="랜딩페이지(디자인) — 곰캠"
+            data-description="랜딩 메인 시안."
+            data-imgs="assets/wolk/rd-frame.png"
+            data-link="https://www.figma.com/proto/WlJF3Cv8pxO7JLbZ3fqVzB/%EB%9E%9C%EB%94%A9%ED%8E%98%EC%9D%B4%EC%A7%80?node-id=8-140&starting-point-node-id=8%3A140&t=pqBNvT65b7sYwOWf-1"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/rd-frame 1.png"
+              alt="곰캠 랜딩페이지 디자인 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">웹디자인 · 랜딩</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+              <a
+                class="ext"
+                href="https://www.gomlab.com/gomcam-screen-recorder"
+                target="_blank"
+                rel="noopener"
+                >원본사이트</a
+              >
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="클론코딩 프로젝트 2"
-              data-description="모나미 사이트의 클론코딩"
-              data-imgs="assets/wolk/monami-colne-2.PNG"
-              data-img-descs="대표 이미지입니다., 상세 보기 이미지입니다."
-              data-link="https://example.com/clone2"
-            >
-              <img
-                src="assets/images/e0104836_18312025.png"
-                alt="클론코딩 프로젝트 2 썸네일"
-              />
-              <div class="overlay">
-                <h4>(미완) 클론코딩 프로젝트 2</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-                <a href="https://www.monami.com/index.php">원본사이트</a>
-              </div>
-            </article>
-          </div>
-        </div>
+          <!-- 앱디자인 -->
+          <article
+            class="work-card"
+            data-cat="app"
+            data-title="앱디자인 팀 프로젝트 — 밥플릭스"
+            data-description="정보구조와 컴포넌트 시스템 설계."
+            data-imgs="assets/wolk/bfric.png"
+            data-link="https://www.figma.com/proto/OGH2s8j1Rt2pdNOfSVF1FO/4%EC%A1%B0-%EB%B0%A5%ED%94%8C%EB%A6%AD%EC%8A%A4-%EC%95%B1%EB%94%94%EC%9E%90%EC%9D%B8?node-id=437-937&t=qyYbe2OtPUdVpJfq-1"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/Frame.png"
+              alt="밥플릭스 앱디자인 팀 프로젝트 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">앱디자인 · 팀 프로젝트</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
 
-        <!-- 카페24 쇼핑몰 -->
-        <div class="portfolio-category">
-          <h3>카페24 쇼핑몰</h3>
-          <div class="portfolio-items">
-            <article
-              class="card"
-              data-title="카페24 쇼핑몰 디자인"
-              data-description="카페24"
-              data-imgs="assets/images/cafe24.png, assets/images/cafe24_detail.png"
-              data-img-descs="메인 썸네일 이미지입니다., 상세 보기 이미지입니다."
-              data-link="https://example.com/cafe24"
-            >
-              <img
-                src="assets/images/e0104836_18312025.png"
-                alt="카페24 쇼핑몰 썸네일"
-              />
-              <div class="overlay">
-                <h4>(미완)카페24 쇼핑몰 디자인</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
-          </div>
-        </div>
+          <article
+            class="work-card"
+            data-cat="app"
+            data-title="앱디자인 개인작업"
+            data-description="개인적으로 진행한 앱디자인 프로젝트."
+            data-imgs="assets/wolk/app-g (0).png,assets/wolk/app-g (1).png,assets/wolk/app-g (1-1).png,assets/wolk/app-g (2).png"
+            data-link="https://example.com/app-personal"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/Sprout-app-logo.png"
+              alt="앱디자인 개인작업 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">앱디자인 · 개인</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
 
-        <!-- 그래픽디자인 -->
-        <div class="portfolio-category">
-          <h3>그래픽디자인</h3>
-          <div class="portfolio-items">
-            <article
-              class="card"
-              data-title="브랜딩 디자인"
-              data-description="브랜드 아이덴티티를 위한 로고, 컬러, 타입 디자인 프로젝트입니다."
-              data-imgs="assets/wolk/brd-dgin.png,assets/wolk/brd-dgin2.png,assets/wolk/brd-dgin3.png,assets/wolk/brd-dgin4.png"
-              data-img-descs="대표 이미지입니다., 로고 시안입니다., 응용 이미지입니다."
-              data-link="https://www.notion.so/23e3669bb29280518728f6956e547923"
-            >
-              <img src="assets/wolk/brd-dgin.png" alt="브랜딩 디자인 썸네일" />
-              <div class="overlay">
-                <h4>브랜딩 디자인</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
+          <!-- 클론코딩 -->
+          <article
+            class="work-card"
+            data-cat="clone"
+            data-title="클론코딩 프로젝트 1 — 삼성화재"
+            data-description="반응형 헤더/히어로/상품 카드 구현."
+            data-imgs="assets/wolk/sclonecode.png"
+            data-link="https://samsungfire-clone-coding.vercel.app/"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/header-logo.svg"
+              alt="삼성화재 클론코딩 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">클론코딩 프로젝트 1</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+              <a
+                class="ext"
+                href="https://www.samsungfire.com/"
+                target="_blank"
+                rel="noopener"
+                >원본사이트</a
+              >
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="SNS 콘텐츠 디자인 1"
-              data-description="SNS 채널용 카드뉴스 디자인. 브랜드에 맞는 톤앤매너와 전달력을 중점으로 작업하였습니다."
-              data-imgs="assets/wolk/sns banner/sns-banner1 (1).jpg,assets/wolk/sns banner/sns-banner1 (2).jpg,assets/wolk/sns banner/sns-banner1 (3).jpg,assets/wolk/sns banner/sns-banner1 (4).jpg"
-              data-img-descs="대표 이미지입니다., 슬라이드 카드 1입니다., 슬라이드 카드 2입니다."
-              data-link="https://example.com/sns1"
-            >
-              <img
-                src="assets/wolk/sns banner/sns-banner1.png"
-                alt="SNS 콘텐츠 디자인 1 썸네일"
-              />
-              <div class="overlay">
-                <h4>SNS 콘텐츠 디자인 1</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
+          <article
+            class="work-card"
+            data-cat="clone"
+            data-title="클론코딩 프로젝트 2 — 모나미"
+            data-description="모나미 사이트 클론."
+            data-imgs="assets/wolk/monami-colne-2.PNG"
+            data-link="https://example.com/clone2"
+          >
+            <img
+              class="thumb"
+              src="assets/images/e0104836_18312025.png"
+              alt="클론코딩 프로젝트 2 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">클론코딩 · 프로젝트 2</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+              <a
+                class="ext"
+                href="https://www.monami.com/index.php"
+                target="_blank"
+                rel="noopener"
+                >원본사이트</a
+              >
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="SNS 콘텐츠 디자인 2"
-              data-description="스킨로션"
-              data-imgs="assets/wolk/sns banner/sns-banner2.jpg"
-              data-img-descs="대표 이미지입니다., 상세 이미지 1입니다., 상세 이미지 2입니다."
-              data-link="https://example.com/sns2"
-            >
-              <img
-                src="assets/wolk/sns banner/AdobeStock_487538992.jpeg"
-                alt="SNS 콘텐츠 디자인 2 썸네일"
-              />
-              <div class="overlay">
-                <h4>SNS 콘텐츠 디자인 2</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
+          <!-- 카페24 쇼핑몰 -->
+          <article
+            class="work-card"
+            data-cat="shop"
+            data-title="카페24 쇼핑몰 디자인"
+            data-description="카페24 커머스 UI 구성."
+            data-imgs="assets/wolk/cafe24-m.png,assets/wolk/cafe24-d.png"
+            data-link="https://gusud001kp25.cafe24.com/"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/cafe24-m.png"
+              alt="카페24 쇼핑몰
+            썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">카페24 쇼핑몰</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="상세페이지 디자인 1"
-              data-description="제품 상세페이지 디자인 작업입니다. 제품 특징을 강조하고 사용자가 정보를 쉽게 이해하도록 구성하였습니다."
-              data-imgs="assets/wolk/ssp-1.png"
-              data-img-descs="제품 상세페이지 대표 이미지입니다."
-              data-link="https://www.notion.so/1-23e3669bb29280a18881cea12977841f"
-            >
-              <img
-                src="assets/wolk/ssfag.png"
-                alt="상세페이지 디자인 1 썸네일"
-              />
-              <div class="overlay">
-                <h4>상세페이지 디자인 1</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
+          <!-- 그래픽디자인 (브랜딩/SNS/상세페이지 포함) -->
+          <article
+            class="work-card"
+            data-cat="graphic"
+            data-title="브랜딩 디자인"
+            data-description="브랜드 아이덴티티(로고/컬러/타입)와 응용 이미지."
+            data-imgs="assets/wolk/brd-dgin.png,assets/wolk/brd-dgin2.png,assets/wolk/brd-dgin3.png,assets/wolk/brd-dgin4.png"
+            data-link="https://www.notion.so/23e3669bb29280518728f6956e547923"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/brd-dgin.png"
+              alt="브랜딩 디자인 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">그래픽디자인 · 브랜딩</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
 
-            <article
-              class="card"
-              data-title="상세페이지 디자인 2"
-              data-description="천연비누 상세페이지"
-              data-imgs="assets/wolk/ssp-2.png"
-              data-img-descs="제품 상세페이지 대표 이미지입니다."
-              data-link="https://www.notion.so/2-23e3669bb29280dc9257c86433054ff1"
-            >
-              <img
-                src="assets/wolk/ssfag-2.jpg"
-                alt="상세페이지 디자인 2 썸네일"
-              />
-              <div class="overlay">
-                <h4>상세페이지 디자인 2</h4>
-                <button class="open-modal-btn">자세히 보기</button>
-              </div>
-            </article>
-          </div>
+          <article
+            class="work-card"
+            data-cat="graphic"
+            data-title="SNS 콘텐츠 디자인 1"
+            data-description="SNS 채널용 카드뉴스 디자인."
+            data-imgs="assets/wolk/sns banner/sns-banner1 (1).jpg,assets/wolk/sns banner/sns-banner1 (2).jpg,assets/wolk/sns banner/sns-banner1 (3).jpg,assets/wolk/sns banner/sns-banner1 (4).jpg"
+            data-link="https://example.com/sns1"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/sns banner/sns-banner1.png"
+              alt="SNS 콘텐츠 디자인 1 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">그래픽디자인 · SNS 1</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-cat="graphic"
+            data-title="SNS 콘텐츠 디자인 2"
+            data-description="스킨로션 프로모션."
+            data-imgs="assets/wolk/sns banner/sns-banner2.jpg"
+            data-link="https://example.com/sns2"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/sns banner/AdobeStock_487538992.jpeg"
+              alt="SNS 콘텐츠 디자인 2 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">그래픽디자인 · SNS 2</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-cat="graphic"
+            data-title="상세페이지 디자인 1"
+            data-description="제품 USP 강조, 정보 구조화 및 시각적 위계."
+            data-imgs="assets/wolk/ssp-1.png"
+            data-link="https://www.notion.so/1-23e3669bb29280a18881cea12977841f"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/ssfag.png"
+              alt="상세페이지 디자인 1 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">그래픽디자인 · 상세 1</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
+
+          <article
+            class="work-card"
+            data-cat="graphic"
+            data-title="상세페이지 디자인 2"
+            data-description="천연비누 상세페이지."
+            data-imgs="assets/wolk/ssp-2.png"
+            data-link="https://www.notion.so/2-23e3669bb29280dc9257c86433054ff1"
+          >
+            <img
+              class="thumb"
+              src="assets/wolk/ssfag-2.jpg"
+              alt="상세페이지 디자인 2 썸네일"
+            />
+            <div class="overlay">
+              <h3 class="title">그래픽디자인 · 상세 2</h3>
+              <button class="open-modal-btn" type="button">자세히 보기</button>
+            </div>
+          </article>
         </div>
       </section>
+
+      <!-- Work 전용 모달 (HTML) -->
+      <div class="modal hidden" id="workModal" aria-hidden="true">
+        <div class="sheet" role="dialog" aria-modal="true">
+          <div class="sheet-header">
+            <h3 class="sheet-title" id="mTitle">제목</h3>
+            <button class="x" id="mClose" type="button">닫기</button>
+          </div>
+          <div class="sheet-body">
+            <p id="mDesc">설명</p>
+            <div class="linkbar" id="mLinks"></div>
+            <div class="imgs" id="mImgs"></div>
+          </div>
+        </div>
+      </div>
 
       <section id="wolk-gallery" class="container">
         <h2>Gallery</h2>
@@ -750,6 +804,17 @@
         </div>
       </section>
 
+      <!-- 모달 구조 (본문 마지막에 위치) -->
+      <div id="modal2" class="modal hidden">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-description"></p>
+          <div id="modal-images"></div>
+          <a id="modal-link" href="#" target="_blank">바로가기</a>
+        </div>
+      </div>
+
       <!-- Contact 섹션 -->
       <section id="contact" class="contact-section">
         <h2>Contact Me</h2>
@@ -789,17 +854,6 @@
         </div>
       </section>
     </main>
-
-    <!-- 모달 구조 (본문 마지막에 위치) -->
-    <div id="modal" class="modal hidden">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
-        <div id="modal-images"></div>
-        <a id="modal-link" href="#" target="_blank">바로가기</a>
-      </div>
-    </div>
 
     <footer>
       <small>&copy; 2025 BHY. All rights reserved.</small>

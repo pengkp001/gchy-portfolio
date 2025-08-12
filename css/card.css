@@ -1,181 +1,226 @@
-#portfolio {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding-top: 50px; /* 상단 공간 확보 */
-  padding-bottom: 50px;
-  background: linear-gradient(rgba(255, 255, 255, 0.6));
+/* 섹션 기본 */
+.work-section {
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #97f2db, #c5deff);
+  color: var(--text);
+}
+/* .work-section h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+} */
+.work-section .subtitle {
+  margin: 0 0 18px;
+  color: var(--muted);
 }
 
-/* 포트폴리오 메인 제목 */
-#portfolio > h2 {
-  position: absolute;
-  top: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2.8rem;
-  font-weight: 300;
-  color: #ffffff;
-  margin: 0; /* 기본 마진 제거 */
-  padding: 10px 0;
-  text-shadow: 0 0 8px #3de8dbaa, 0 0 20px #3de8db88;
-  letter-spacing: 2px;
-  z-index: 10;
-}
-
-#portfolio h2 {
-  margin-top: 80px;
-}
-
-.portfolio-items {
-  margin-top: 50px;
-  margin-left: 30%;
+/* ===== Tabs (필요 시) ===== */
+.tabs {
   display: flex;
-  align-items: center;
+  gap: 8px;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  margin-bottom: 16px;
 }
-
-.card {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  overflow: hidden;
+.tabs .tab {
+  appearance: none;
   cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-2);
+  color: var(--muted);
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+.tabs .tab[aria-selected="true"] {
+  color: var(--text);
+  border-color: transparent;
+  background-color: #fff;
+  box-shadow: var(--ring);
 }
 
-.card img {
+/* ===== Grid ===== */
+.work-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+@media (max-width: 1200px) {
+  .work-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (max-width: 760px) {
+  .work-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 카드는 기본 4칸(=3열), 좁아지면 자동 2/1열 */
+.work-card {
+  grid-column: span 4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background-color: #fff;
+}
+.work-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px (rgba(87, 255, 71, 0.493));
+  mix-blend-mode: multiply;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* 썸네일: 비율 안정 + 호버 줌 */
+.work-card .thumb {
+  display: block;
   width: 100%;
+  aspect-ratio: 16/10;
   object-fit: cover;
-  transition: filter 0.3s ease;
+  background: #0c1230;
+  transform: scale(1);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+.work-card:hover .thumb {
+  transform: scale(1.04);
+  filter: brightness(0.9);
 }
 
-.card:hover img {
-  filter: brightness(0.4);
-}
+/* 카드 하단 정보(제목은 overlay 안에서 보여주니 필요없으면 생략) */
 
-.overlay {
+/* ===== Overlay (타이틀/버튼/외부링크) ===== */
+.work-card .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  justify-content: center;
+  gap: 10px;
   text-align: center;
-  padding: 1rem;
+  padding: 14px;
+  background: radial-gradient(
+    120% 120% at 50% 45%,
+    rgba(10, 16, 36, 0) 0%,
+    rgba(10, 16, 36, 0.55) 70%,
+    rgba(10, 16, 36, 0.75) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
-
-.overlay h3 {
-  font-size: 30px;
-}
-
-.portfolio-category h3 {
-  font-family: "Nanum Pen Script", cursive;
-  transform: translate(10%, 190%);
-  font-weight: bold;
-  font-size: 50px;
-}
-
-.card:hover .overlay {
+.work-card:hover .overlay {
   opacity: 1;
 }
 
-.overlay button {
-  margin-top: 0.5rem;
-  padding: 0.4rem 1rem;
-  background: white;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.work-card .overlay .title {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
-.overlay button:hover {
-  background: #eee;
-}
-
-.portfolio-items img {
-  background-color: rgb(255, 254, 253);
-}
-
-/* 기본 카드 레이아웃 */
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* 버튼/링크 스타일을 통일 */
+.open-modal-btn,
+.overlay .ext {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: 40px 20px;
-}
-
-.hidden {
-  display: none;
-}
-
-.card {
-  width: 400px;
-  height: 350px;
-  background: lightgray;
-  position: relative;
-  margin: 20px;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.05s ease;
+}
+.open-modal-btn {
+  background: var(--accent);
+  color: #0c1226;
+  border-color: transparent;
+}
+.open-modal-btn:hover {
+  filter: brightness(1.05);
+}
+.overlay .ext {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.overlay .ext:hover {
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.open-modal-btn:active,
+.overlay .ext:active {
+  transform: translateY(1px);
 }
 
-/* 모달 기본 스타일 */
+/* 포커스 접근성 */
+.open-modal-btn:focus,
+.overlay .ext:focus {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/* ===== 라이트 톤으로 쓰고 싶다면 이 블록만 대체 ===== */
+/* 
+:root{
+  --bg:#f7f9fc; --surface:#ffffff; --surface-2:#f3f6fb;
+  --text:#0e1726; --muted:#6b778f; --accent:#1f6fff; --accent-2:#7b61ff; --ring:0 0 0 2px rgba(31,111,255,.25);
+}
+.work-section{ background:#f7f9fc; }
+.work-card{ border:1px solid rgba(0,0,0,.06); }
+.work-card .overlay{ background: linear-gradient(180deg, rgba(255,255,255,0), rgba(10,16,36,.15)); }
+*/
+
+/* 모달: 기본은 숨김 */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
+  inset: 0;
+  display: none; /* ← 기본 숨김 */
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  background: transparent; /* 검은 배경 없이 투명 오버레이 */
+  z-index: 9999;
+}
+/* hidden 제거되면 노출 */
+.modal:not(.hidden) {
+  display: flex;
 }
 
-.modal.hidden {
-  display: none;
-}
-
+/* 내용 카드 */
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
+  background: #fff;
+  color: #111;
+  width: min(860px, 92vw);
+  max-height: 86vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  padding: 20px 22px;
   position: relative;
 }
-
 .modal .close {
   position: absolute;
+  right: 14px;
   top: 10px;
-  right: 15px;
   font-size: 24px;
   cursor: pointer;
+}
+#modal-link[hidden] {
+  display: none;
+}
+#modal-images img {
+  width: 100%;
+  display: block;
+  margin-top: 12px;
+  border-radius: 8px;
 }
 
 .modal-close:hover {
   color: #fff;
-}
-
-#modal-images img {
-  width: 100%;
-  margin-top: 10px;
 }
 
 #modal {
@@ -261,4 +306,74 @@
 
 .modal-link-btn:hover {
   background-color: #7f76ff;
+}
+
+/* Work 모달: 기본은 숨김 */
+#workModal.modal {
+  position: fixed;
+  inset: 0;
+  display: none; /* ← 기본 숨김 */
+  justify-content: center;
+  align-items: center;
+  background: transparent; /* ← 검은 배경 제거 (살짝 어둡게 하려면 rgba(0,0,0,.15) 정도로) */
+  z-index: 9999;
+}
+/* hidden 제거되면 보여주기 */
+#workModal.modal:not(.hidden) {
+  display: flex;
+}
+
+/* 안쪽 시트(내용 박스) */
+#workModal .sheet {
+  width: min(920px, 92vw);
+  max-height: 86vh;
+  background: #fff;
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+}
+#workModal .sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+#workModal .sheet-body {
+  padding: 16px;
+}
+#workModal .imgs img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 모달 링크 영역 */
+
+#workModal .linkbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+#workModal .link-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #0f1836;
+  color: #eaf0ff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+#workModal .link-btn:hover {
+  border-color: rgba(255, 255, 255, 0.28);
 }

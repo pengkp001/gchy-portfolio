@@ -1,49 +1,129 @@
-#wolk-gallery {
-  width: 100%;
-  height: 100%;
+/* 섹션 컨테이너 */
+#wolk-gallery.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: linear-gradient(#c5deff, #fff);
 }
 
+/* 그리드: 화면폭에 맞춰 자동 1~4열 */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 30px;
-  padding-left: 100px;
-  padding-right: 100px;
-  box-sizing: border-box; /* 패딩 포함해서 크기 계산 */
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+/* 카드 */
 .gallery-item {
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  background: #0f1530; /* 라이트 톤이면 #fff 로 */
+  /* border: 1px solid rgba(255, 255, 255, 0.08); */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
+/* 이미지: 안정적인 비율 */
 .gallery-item img {
   width: 100%;
-  height: 80%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  background: #0b1020;
+  transform: scale(1);
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
-
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.04);
+  filter: brightness(0.95);
 }
 
-.gallery-caption {
+/* 오버레이: hover에 뜨는 레이어 */
+.gallery-item::before {
+  content: "";
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: radial-gradient(
+    120% 120% at 50% 45%,
+    rgba(14, 20, 46, 0) 0%,
+    rgba(14, 20, 46, 0.55) 70%,
+    rgba(14, 20, 46, 0.75) 100%
+  );
   opacity: 0;
-  transition: opacity 0.3s ease;
-  font-weight: 600;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
 }
-
-.gallery-item:hover .gallery-caption {
+.gallery-item:hover::before {
   opacity: 1;
 }
+
+/* 캡션 & 버튼 영역 */
+.gallery-item .caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.gallery-item .view-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #7aa7ff;
+  color: #0c1226;
+  font-size: 14px;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.05s ease;
+  opacity: 0;
+  transform: translateY(6px);
+}
+.gallery-item .view-btn:hover {
+  filter: brightness(1.05);
+}
+.gallery-item .view-btn:active {
+  transform: translateY(7px);
+}
+
+/* hover 시 노출 */
+.gallery-item:hover .caption,
+.gallery-item:hover .view-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 모바일(hover 없음)에서는 항상 버튼/캡션 보이기 */
+@media (hover: none) {
+  .gallery-item .caption,
+  .gallery-item .view-btn {
+    opacity: 1;
+    transform: none;
+  }
+  .gallery-item::before {
+    opacity: 0.35;
+  } /* 살짝만 어둡게 */
+}
+
+/* 라이트 톤으로 바꾸고 싶다면 이 3줄만 바꾸세요 */
+/*
+.gallery-item{ background:#fff; border:1px solid rgba(0,0,0,.06); }
+.gallery-item::before{ background: linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,.25) 100%); }
+.gallery-item .caption{ color:#111; text-shadow:none; }
+*/

@@ -32,18 +32,32 @@ function setupScrollBackgroundTransition() {
   }
 }
 
-/** 고래 이미지 마우스 근접 시 hover 효과 */
-function setupWhaleHoverEffect() {
-  const whale = document.querySelector(".whale-image");
-  if (!whale) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.querySelector(".menu-bar");
+  const intro = document.getElementById("intro");
 
-  const hoverRadius = 100;
-  window.addEventListener("mousemove", (e) => {
-    const rect = whale.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+  if (!menu || !intro) return;
 
-    const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
-    whale.classList.toggle("hover-effect", distance < hoverRadius);
-  });
-}
+  // 해시로 #about, #work 등 바로 진입하면 즉시 보이기
+  if (location.hash && location.hash !== "#intro") {
+    menu.classList.add("visible");
+  }
+
+  // intro가 화면에 보이는 동안은 숨기고, 벗어나면 보이기
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+        menu.classList.remove("visible"); // 인트로 보임 → 숨김
+      } else {
+        menu.classList.add("visible"); // 인트로 안 보임 → 보임
+      }
+    },
+    {
+      root: null,
+      threshold: [0, 0.1], // 10% 이하만 보여도 "보이는 것"으로 간주
+      rootMargin: "-80px 0px 0px 0px", // 네비 높이만큼 여유 (상단 80px)
+    }
+  );
+
+  io.observe(intro);
+});
