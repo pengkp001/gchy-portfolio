@@ -69,7 +69,7 @@
 .static-img,
 .flap-img {
   position: absolute;
-  top: -90px;
+  top: -180px;
   left: 0;
   width: 100%;
   transition: opacity 0.3s ease;
