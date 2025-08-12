@@ -190,9 +190,9 @@
 }
 
 .block h3 {
-  font-size: 40px;
+  font-size: 30px;
   color: #009b96;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   /* padding-bottom: 10px; */
   /* border-bottom: 3px solid #ffffff; */
   background-color: #fff;
@@ -211,7 +211,7 @@
 .block ul li {
   margin-top: 20px;
   margin-left: 100px;
-  font-size: 30px;
+  font-size: 20px;
   font-family: "Cafe24Ssurround";
   margin-bottom: 10px;
   text-align: left;
@@ -274,21 +274,15 @@
 /* 이미지 스타일 */
 .skills-list img {
   width: 100px;
-  filter: drop-shadow(0 0 6px #3de8dbcc);
   margin-top: 10px;
   margin-bottom: 10px;
-  transition: filter 0.3s ease;
-}
-
-.skills-list figure:hover img {
-  filter: drop-shadow(0 0 12px #3de8dbdd);
 }
 
 /* 캡션 */
 .skills-list figcaption {
   font-family: "Cafe24Ssurround";
-  font-weight: bold;
-  font-size: 50px;
+  font-size: 20px;
+  text-align: center;
   color: #ffffffdd;
   letter-spacing: 0.03em;
   user-select: none;
